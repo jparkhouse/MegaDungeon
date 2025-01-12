@@ -61,3 +61,6 @@ func change_action(type: CharacterActionType, time: int) -> CharacterActionError
 func die():
 	self.action_type = CharacterActionType.Dead
 	self.time_remaining = INF
+
+func progress_second(amount = 1):
+	self.time_remaining -= amount
