@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvhapw3450fcb"]
+
+[ext_resource type="Script" path="res://giorgos_prototype/scene.gd" id="1_8tj4o"]
+[ext_resource type="PackedScene" uid="uid://do1iptctvvjeg" path="res://giorgos_prototype/character.tscn" id="2_x8ukk"]
+[ext_resource type="PackedScene" uid="uid://cbyr0yksbqd5j" path="res://giorgos_prototype/hud.tscn" id="3_nj0pc"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_8tj4o")
+char_scene = ExtResource("2_x8ukk")
+
+[node name="HUD" parent="." instance=ExtResource("3_nj0pc")]
+
+[connection signal="action" from="HUD" to="." method="_on_hud_action"]
