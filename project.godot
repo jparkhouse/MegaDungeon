@@ -15,6 +15,10 @@ run/main_scene="res://fight_ui.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+InventorySystem="*res://inventory-system/global_items.gd"
+
 [global_group]
 
 action_timeline=""
