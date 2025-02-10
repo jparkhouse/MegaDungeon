@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvhapw3450fcb"]
+[gd_scene load_steps=5 format=3 uid="uid://cvhapw3450fcb"]
 
 [ext_resource type="Script" path="res://giorgos_prototype/scene.gd" id="1_8tj4o"]
-[ext_resource type="PackedScene" uid="uid://do1iptctvvjeg" path="res://giorgos_prototype/character.tscn" id="2_x8ukk"]
+[ext_resource type="PackedScene" uid="uid://b8ittnwlm2kgx" path="res://giorgos_prototype/combatants/red_combatant.tscn" id="2_o6w86"]
+[ext_resource type="PackedScene" uid="uid://cmpypul44ngv6" path="res://giorgos_prototype/combatants/blue_combatant.tscn" id="3_g210a"]
 [ext_resource type="PackedScene" uid="uid://cbyr0yksbqd5j" path="res://giorgos_prototype/hud.tscn" id="3_nj0pc"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_8tj4o")
-char_scene = ExtResource("2_x8ukk")
+red_char_scene = ExtResource("2_o6w86")
+blue_char_scene = ExtResource("3_g210a")
 
 [node name="HUD" parent="." instance=ExtResource("3_nj0pc")]
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8ittnwlm2kgx"]
+
+[ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_iraob"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_bfkwv"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/attack.gd" id="2_mk13l"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="5_n1g8m"]
+
+[sub_resource type="Resource" id="Resource_5yi0f"]
+script = ExtResource("2_mk13l")
+damage = 1
+move_name = "light attack"
+move_time = 1
+
+[sub_resource type="Resource" id="Resource_nsnle"]
+script = ExtResource("2_mk13l")
+damage = 5
+move_name = "Heavy attack"
+move_time = 3
+
+[sub_resource type="Resource" id="Resource_axfhn"]
+script = ExtResource("5_n1g8m")
+move_name = "Move"
+move_time = 1
+
+[node name="RedCombatant" type="Node" groups=["characters"]]
+script = ExtResource("1_iraob")
+character_name = "Red"
+health = 30
+moves = Array[ExtResource("2_bfkwv")]([SubResource("Resource_5yi0f"), SubResource("Resource_nsnle"), SubResource("Resource_axfhn")])

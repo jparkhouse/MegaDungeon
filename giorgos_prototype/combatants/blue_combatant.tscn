@@ -1,0 +1,30 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmpypul44ngv6"]
+
+[ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_nr828"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_5p27b"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/attack.gd" id="3_00372"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/heal.gd" id="4_akftn"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="5_uyuvw"]
+
+[sub_resource type="Resource" id="Resource_k5ves"]
+script = ExtResource("3_00372")
+damage = 4
+move_name = "Attack"
+move_time = 2
+
+[sub_resource type="Resource" id="Resource_6ls5y"]
+script = ExtResource("4_akftn")
+damage = 2
+move_name = "Heal"
+move_time = 3
+
+[sub_resource type="Resource" id="Resource_axfhn"]
+script = ExtResource("5_uyuvw")
+move_name = "Move"
+move_time = 1
+
+[node name="BlueCombatant" type="Node" groups=["characters"]]
+script = ExtResource("1_nr828")
+character_name = "Blue"
+health = 20
+moves = Array[ExtResource("2_5p27b")]([SubResource("Resource_k5ves"), SubResource("Resource_6ls5y"), SubResource("Resource_axfhn")])

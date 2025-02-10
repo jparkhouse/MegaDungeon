@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b76wfx6q2mtvv"]
-
-[ext_resource type="PackedScene" uid="uid://cauajalb8v8s3" path="res://giorgos_prototype/move.tscn" id="1_u1sgs"]
-[ext_resource type="Script" path="res://giorgos_prototype/attack.gd" id="2_s45r1"]
-
-[node name="Move" instance=ExtResource("1_u1sgs")]
-script = ExtResource("2_s45r1")

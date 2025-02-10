@@ -1,0 +1,8 @@
+extends MoveClass
+
+class_name HealClass
+
+@export var damage:    int
+
+func perform_move(character):
+	print(character.character_name + " is healing for " + str(damage))

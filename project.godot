@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="MegaDungeon"
-run/main_scene="res://fight_ui.tscn"
+run/main_scene="res://giorgos_prototype/scene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [global_group]
 
 action_timeline=""
+characters=""
 
 [rendering]
 

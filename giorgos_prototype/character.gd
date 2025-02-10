@@ -1,4 +1,5 @@
 extends Node2D
+
 var move_times
 var next_turn 
 var character_name
