@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://do1iptctvvjeg"]
-
-[ext_resource type="Script" path="res://giorgos_prototype/character.gd" id="1_uqooc"]
-
-[node name="character" type="Node2D" groups=["characters"]]
-script = ExtResource("1_uqooc")

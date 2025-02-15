@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmpypul44ngv6"]
+[gd_scene load_steps=11 format=3 uid="uid://cmpypul44ngv6"]
 
 [ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_nr828"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_5p27b"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/attack.gd" id="3_00372"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/heal.gd" id="4_akftn"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="5_uyuvw"]
+[ext_resource type="Texture2D" uid="uid://cg70qkyp51ghf" path="res://assets/alienBlue.png" id="6_sjcr3"]
+[ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="7_oisil"]
 
 [sub_resource type="Resource" id="Resource_k5ves"]
 script = ExtResource("3_00372")
@@ -28,3 +30,6 @@ script = ExtResource("1_nr828")
 character_name = "Blue"
 health = 20
 moves = Array[ExtResource("2_5p27b")]([SubResource("Resource_k5ves"), SubResource("Resource_6ls5y"), SubResource("Resource_axfhn")])
+skin = ExtResource("6_sjcr3")
+
+[node name="GenericCombatant" parent="." instance=ExtResource("7_oisil")]

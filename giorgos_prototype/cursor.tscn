@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccwy1xh3i8w7d"]
+
+[ext_resource type="Script" path="res://giorgos_prototype/cursor.gd" id="1_a8l2a"]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("1_a8l2a")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

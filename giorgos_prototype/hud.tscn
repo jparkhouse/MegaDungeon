@@ -96,10 +96,9 @@ text = "Character Name"
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -529.0
-offset_top = 40.0
-offset_right = 529.0
-offset_bottom = 264.0
+offset_left = -528.0
+offset_right = 530.0
+offset_bottom = 13.0
 grow_horizontal = 2
 alignment = 1
 
