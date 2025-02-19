@@ -68,6 +68,7 @@ var _is_walking := false :
 
 var next_turn
 var queued_action
+var queued_action_parameters
 signal moved
 signal walk_finished
 
@@ -108,12 +109,13 @@ func walk_along(path: PackedVector2Array) -> void:
 
 func execute_move() -> void:
 	if queued_action != null:
-		moves[queued_action].perform_move(self)
+		moves[queued_action].perform_move(self, queued_action_parameters)
 	queued_action = null
 
 func queue_move(move_nr) -> void:
 	next_turn += moves[move_nr].move_time
 	queued_action = move_nr
+	queued_action_parameters = await moves[queued_action].get_parameters(self)
 	emit_signal("moved", moves[move_nr].move_time)
 
 func add_move_times():

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqaxsw16if0r0"]
+
+[ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_2d2p7"]
+[ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="2_t4dhd"]
+
+[node name="GreenCombatant" type="Node" groups=["characters"]]
+script = ExtResource("1_2d2p7")
+character_name = "Green"
+health = 30
+
+[node name="GenericCombatant" parent="." instance=ExtResource("2_t4dhd")]

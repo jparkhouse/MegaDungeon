@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8ittnwlm2kgx"]
+[gd_scene load_steps=11 format=3 uid="uid://b8ittnwlm2kgx"]
 
 [ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_iraob"]
 [ext_resource type="Texture2D" uid="uid://ben6s2gscoi2y" path="res://assets/alienPink.png" id="2_08j66"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_bfkwv"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/attack.gd" id="2_mk13l"]
+[ext_resource type="Resource" uid="uid://dk3mj0p6xnswn" path="res://giorgos_prototype/resources/grid.tres" id="4_davdk"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="5_n1g8m"]
 [ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="6_cqe0h"]
 
@@ -21,6 +22,7 @@ move_time = 3
 
 [sub_resource type="Resource" id="Resource_axfhn"]
 script = ExtResource("5_n1g8m")
+grid = ExtResource("4_davdk")
 move_name = "Move"
 move_time = 1
 

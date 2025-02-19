@@ -4,5 +4,5 @@ class_name HealClass
 
 @export var damage:    int
 
-func perform_move(character):
+func perform_move(character, parameters):
 	print(character.character_name + " is healing for " + str(damage))

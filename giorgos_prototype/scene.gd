@@ -24,9 +24,12 @@ func _ready() -> void:
 	$GameBoard.add_child(char_1)
 	
 	var char_2 = blue_char_scene.instantiate()
-	char_1.cell = Vector2(0, 0)
+	char_2.cell = Vector2(0, 0)
 	$HUD.add_character_action_timeline(char_2)
 	$GameBoard.add_child(char_2)
+	
+	$GameBoard.reinitialize()
+	print("UNITS "+ str($GameBoard.units))
 	
 	for character in get_tree().get_nodes_in_group("characters"):
 		print(character.name)
@@ -34,6 +37,7 @@ func _ready() -> void:
 	
 	
 func perform_actions() -> void:
+	$GameBoard.reinitialize()
 	for character in get_tree().get_nodes_in_group("characters"):
 		if current_time == character.next_turn:
 			current_character = character
