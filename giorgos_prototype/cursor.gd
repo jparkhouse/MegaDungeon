@@ -34,7 +34,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		self.cell = grid.calculate_grid_coordinates(event.position)
 
 	elif event.is_action_pressed("click") or event.is_action_pressed("ui_accept"):
-		print("CLICKED")
 		emit_signal("accept_pressed", cell)
 
 func _draw() -> void:

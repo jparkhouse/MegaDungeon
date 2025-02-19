@@ -30,3 +30,6 @@ func as_index(cell: Vector2) -> int:
 	
 func from_index(cell: int) -> Vector2:
 	return Vector2(cell % int(size.x), cell / int(size.x))
+
+func calculate_distance(cell_1, cell_2):
+	return roundf(sqrt((cell_1.x-cell_2.x)**2+(cell_1.y-cell_2.y)**2))

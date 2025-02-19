@@ -29,7 +29,6 @@ func _ready() -> void:
 	$GameBoard.add_child(char_2)
 	
 	$GameBoard.reinitialize()
-	print("UNITS "+ str($GameBoard.units))
 	
 	for character in get_tree().get_nodes_in_group("characters"):
 		print(character.name)

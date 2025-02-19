@@ -12,6 +12,7 @@
 [sub_resource type="Resource" id="Resource_k5ves"]
 script = ExtResource("3_00372")
 damage = 4
+range = 1
 move_name = "Attack"
 move_time = 2
 

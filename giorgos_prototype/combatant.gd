@@ -50,7 +50,6 @@ var is_selected := false :
 	set(value):
 		is_selected = value
 		if is_selected:
-			print("SELECTED")
 			_anim_player.play("selected")
 		else:
 			_anim_player.play("idle")
@@ -120,3 +119,10 @@ func queue_move(move_nr) -> void:
 
 func add_move_times():
 	pass
+
+func take_damage(d):
+	health = health - d
+	print(character_name + "'s health is now " + str(health))
+
+func heal(d):
+	health = health + d

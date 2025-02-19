@@ -10,10 +10,16 @@ func perform_move(character, parameters):
 	
 func get_parameters(character):
 	var parameters = {}
-	print("Getting parameters")
 	var cursor = cursor_scene.instantiate()
 	character.add_child(cursor)
-	parameters["cell"] = await cursor.accept_pressed
+	
+	var valid_selection = false
+	while not valid_selection:
+		parameters["cell"] = await cursor.accept_pressed
+		if grid.calculate_distance(parameters["cell"], character.cell) <= character.move_range:
+			valid_selection = true
+		else:
+			print("too far")
 	print(parameters["cell"])
 	cursor.queue_free()
 	return parameters

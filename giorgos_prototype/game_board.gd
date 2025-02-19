@@ -16,7 +16,5 @@ func _ready() -> void:
 func reinitialize() -> void:
 	units.clear()
 	for character in get_tree().get_nodes_in_group("characters"):
-		print("in init " + str(character))
 		units[character.cell] = character
-		print("units " + str(units))
 		
