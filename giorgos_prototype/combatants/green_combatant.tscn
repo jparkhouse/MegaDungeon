@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqaxsw16if0r0"]
+[gd_scene load_steps=5 format=3 uid="uid://bqaxsw16if0r0"]
 
 [ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_2d2p7"]
+[ext_resource type="Texture2D" uid="uid://dl3aoxui3wvrr" path="res://assets/alienGreen.png" id="2_61hhm"]
 [ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="2_t4dhd"]
+[ext_resource type="Texture2D" uid="uid://dw4exu0ayxch4" path="res://assets/p1_dead.png" id="3_7jlcv"]
 
-[node name="GreenCombatant" type="Node" groups=["characters"]]
+[node name="GreenCombatant" type="Node" groups=["characters", "map_entity"]]
 script = ExtResource("1_2d2p7")
 character_name = "Green"
 health = 30
+skin = ExtResource("2_61hhm")
+corpse_skin = ExtResource("3_7jlcv")
 
 [node name="GenericCombatant" parent="." instance=ExtResource("2_t4dhd")]

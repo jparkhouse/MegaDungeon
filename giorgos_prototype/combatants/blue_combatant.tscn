@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmpypul44ngv6"]
+[gd_scene load_steps=13 format=3 uid="uid://cmpypul44ngv6"]
 
 [ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_nr828"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_5p27b"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="5_uyuvw"]
 [ext_resource type="Texture2D" uid="uid://cg70qkyp51ghf" path="res://assets/alienBlue.png" id="6_sjcr3"]
 [ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="7_oisil"]
+[ext_resource type="Texture2D" uid="uid://b7xxlapuwfbg8" path="res://assets/p2_dead.png" id="8_mw7ad"]
 
 [sub_resource type="Resource" id="Resource_k5ves"]
 script = ExtResource("3_00372")
@@ -28,11 +29,12 @@ grid = ExtResource("5_ou7wq")
 move_name = "Move"
 move_time = 1
 
-[node name="BlueCombatant" type="Node" groups=["characters"]]
+[node name="BlueCombatant" type="Node" groups=["characters", "map_entity"]]
 script = ExtResource("1_nr828")
 character_name = "Blue"
-health = 25
+health = 20
 moves = Array[ExtResource("2_5p27b")]([SubResource("Resource_k5ves"), SubResource("Resource_6ls5y"), SubResource("Resource_axfhn")])
 skin = ExtResource("6_sjcr3")
+corpse_skin = ExtResource("8_mw7ad")
 
 [node name="GenericCombatant" parent="." instance=ExtResource("7_oisil")]

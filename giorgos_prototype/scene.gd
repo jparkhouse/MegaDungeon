@@ -1,6 +1,7 @@
 extends Node
 @export var red_char_scene: PackedScene
 @export var blue_char_scene: PackedScene
+@export var obstacle_scene: PackedScene
 var current_time: int
 var current_character
 
@@ -27,6 +28,10 @@ func _ready() -> void:
 	char_2.cell = Vector2(0, 0)
 	$HUD.add_character_action_timeline(char_2)
 	$GameBoard.add_child(char_2)
+	
+	var obst_1 = obstacle_scene.instantiate()
+	obst_1.cell = Vector2(1,1)
+	$GameBoard.add_child(obst_1)
 	
 	$GameBoard.reinitialize()
 	

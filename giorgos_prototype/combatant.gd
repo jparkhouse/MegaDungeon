@@ -29,6 +29,8 @@ class_name Combatant
 	get:
 		return _sprite.texture
 
+@export var corpse_skin: Texture
+
 @export var skin_offset := Vector2.ZERO :
 	set(value):
 		skin_offset = value
@@ -39,6 +41,8 @@ class_name Combatant
 		return _sprite.position
 		
 @export var move_speed := 600.0
+
+var corpse_scene = preload("res://giorgos_prototype/map_objects/obstacle.tscn")
 
 var cell := Vector2.ZERO :
 	set(value):
@@ -123,6 +127,15 @@ func add_move_times():
 func take_damage(d):
 	health = health - d
 	print(character_name + "'s health is now " + str(health))
+	if health <= 0:
+		die()
 
 func heal(d):
 	health = health + d
+
+func die():
+	var corpse = corpse_scene.instantiate()
+	corpse.texture = corpse_skin
+	corpse.cell = cell
+	get_parent().add_child(corpse)
+	queue_free()

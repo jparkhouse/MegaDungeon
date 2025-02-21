@@ -15,6 +15,6 @@ func _ready() -> void:
 
 func reinitialize() -> void:
 	units.clear()
-	for character in get_tree().get_nodes_in_group("characters"):
-		units[character.cell] = character
+	for entity in get_tree().get_nodes_in_group("map_entity"):
+		units[entity.cell] = entity
 		

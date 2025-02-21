@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://cvhapw3450fcb"]
+[gd_scene load_steps=10 format=4 uid="uid://cvhapw3450fcb"]
 
 [ext_resource type="Script" path="res://giorgos_prototype/scene.gd" id="1_8tj4o"]
 [ext_resource type="PackedScene" uid="uid://b8ittnwlm2kgx" path="res://giorgos_prototype/combatants/red_combatant.tscn" id="2_o6w86"]
 [ext_resource type="PackedScene" uid="uid://cmpypul44ngv6" path="res://giorgos_prototype/combatants/blue_combatant.tscn" id="3_g210a"]
 [ext_resource type="PackedScene" uid="uid://cbyr0yksbqd5j" path="res://giorgos_prototype/hud.tscn" id="3_nj0pc"]
 [ext_resource type="Texture2D" uid="uid://bq8u4egvki6se" path="res://assets/roguelikeDungeon_transparent.png" id="4_8ifrr"]
+[ext_resource type="PackedScene" uid="uid://dp3tgr1qgljyj" path="res://giorgos_prototype/map_objects/obstacle.tscn" id="4_70qjj"]
 [ext_resource type="Script" path="res://giorgos_prototype/game_board.gd" id="6_b7c0c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_duuw3"]
@@ -344,6 +345,7 @@ sources/0 = SubResource("TileSetAtlasSource_duuw3")
 script = ExtResource("1_8tj4o")
 red_char_scene = ExtResource("2_o6w86")
 blue_char_scene = ExtResource("3_g210a")
+obstacle_scene = ExtResource("4_70qjj")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(456, 160)
