@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cvhapw3450fcb"]
+[gd_scene load_steps=12 format=4 uid="uid://cvhapw3450fcb"]
 
 [ext_resource type="Script" path="res://giorgos_prototype/scene.gd" id="1_8tj4o"]
 [ext_resource type="PackedScene" uid="uid://b8ittnwlm2kgx" path="res://giorgos_prototype/combatants/red_combatant.tscn" id="2_o6w86"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cbyr0yksbqd5j" path="res://giorgos_prototype/hud.tscn" id="3_nj0pc"]
 [ext_resource type="Texture2D" uid="uid://bq8u4egvki6se" path="res://assets/roguelikeDungeon_transparent.png" id="4_8ifrr"]
 [ext_resource type="PackedScene" uid="uid://dp3tgr1qgljyj" path="res://giorgos_prototype/map_objects/obstacle.tscn" id="4_70qjj"]
+[ext_resource type="PackedScene" uid="uid://2bxj482fnrsu" path="res://giorgos_prototype/combatants/yellow_combatant.tscn" id="4_a43ff"]
+[ext_resource type="PackedScene" uid="uid://bqaxsw16if0r0" path="res://giorgos_prototype/combatants/green_combatant.tscn" id="5_jjrs7"]
 [ext_resource type="Script" path="res://giorgos_prototype/game_board.gd" id="6_b7c0c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_duuw3"]
@@ -345,12 +347,14 @@ sources/0 = SubResource("TileSetAtlasSource_duuw3")
 script = ExtResource("1_8tj4o")
 red_char_scene = ExtResource("2_o6w86")
 blue_char_scene = ExtResource("3_g210a")
+yellow_char_scene = ExtResource("4_a43ff")
+green_char_scene = ExtResource("5_jjrs7")
 obstacle_scene = ExtResource("4_70qjj")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(456, 160)
-scale = Vector2(5, 5)
-tile_map_data = PackedByteArray("AAAAAAAAAAAFAAoAAAABAAAAAAAGAAoAAAACAAAAAAAHAAoAAAACAAEAAAAHAAsAAAACAAIAAAAHAAwAAAAAAAEAAAAFAAsAAAAAAAIAAAAFAAwAAAABAAEAAAAGAAsAAAABAAIAAAAGAAwAAAA=")
+scale = Vector2(2.5, 2.5)
+tile_map_data = PackedByteArray("AAAAAAAAAAAFAAoAAAACAAAAAAAGAAoAAAACAAEAAAAGAAsAAAACAAIAAAAGAAsAAAAAAAEAAAAFAAsAAAAAAAIAAAAFAAsAAAABAAEAAAAGAAsAAAABAAIAAAAGAAsAAAADAAEAAAAGAAsAAAAEAAEAAAAGAAsAAAAFAAEAAAAHAAsAAAABAAAAAAAGAAoAAAADAAAAAAAGAAoAAAAEAAAAAAAGAAoAAAAFAAAAAAAHAAoAAAAAAAMAAAAFAAsAAAAAAAQAAAAFAAsAAAABAAQAAAAGAAsAAAACAAQAAAAGAAsAAAADAAQAAAAGAAsAAAAEAAQAAAAGAAsAAAAFAAQAAAAHAAsAAAAFAAMAAAAHAAsAAAAFAAIAAAAHAAsAAAAEAAIAAAAGAAsAAAADAAIAAAAGAAsAAAABAAMAAAAGAAsAAAACAAMAAAAGAAsAAAADAAMAAAAGAAsAAAAEAAMAAAAGAAsAAAABAAUAAAAGAAwAAAACAAUAAAAGAAwAAAADAAUAAAAGAAwAAAAEAAUAAAAGAAwAAAAFAAUAAAAHAAwAAAAAAAUAAAAFAAwAAAA=")
 tile_set = SubResource("TileSet_uw0nu")
 
 [node name="HUD" parent="." instance=ExtResource("3_nj0pc")]

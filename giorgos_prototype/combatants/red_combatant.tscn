@@ -16,7 +16,7 @@ damage = 3
 range = 1
 move_range = 1
 move_name = "M Attack"
-move_time = 1
+move_time = 2
 
 [sub_resource type="Resource" id="Resource_ubxk4"]
 script = ExtResource("4_q1esj")
@@ -35,7 +35,7 @@ move_time = 1
 [node name="RedCombatant" type="Node" groups=["characters", "map_entity"]]
 script = ExtResource("1_iraob")
 character_name = "Red"
-health = 30
+health = 15
 moves = Array[ExtResource("2_bfkwv")]([SubResource("Resource_4b3mk"), SubResource("Resource_ubxk4"), SubResource("Resource_axfhn")])
 skin = ExtResource("2_08j66")
 corpse_skin = ExtResource("7_0ikma")

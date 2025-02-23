@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://giorgos_prototype/cursor.gd" id="1_a8l2a"]
 
-[node name="Cursor" type="Node2D"]
+[node name="Cursor" type="Node2D" groups=["cursor"]]
 visible = false
 script = ExtResource("1_a8l2a")
 

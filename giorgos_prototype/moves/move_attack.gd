@@ -9,9 +9,9 @@ class_name MoveAttackClass
 func perform_move(character, parameters):
 	var line_cells = character.grid.calculate_line(character.cell, parameters["target"].cell)
 	if len(line_cells) - 1 > move_range:
-		character.walk_along([line_cells[move_range]])
+		character.move_to(line_cells[move_range])
 	else:
-		character.walk_along([line_cells[-2]])
+		character.move_to(line_cells[-2])
 	var distance = character.grid.calculate_distance(character.cell, parameters["target"].cell)
 	if distance > range:
 		print(character.character_name + " failed to attack due to distance")

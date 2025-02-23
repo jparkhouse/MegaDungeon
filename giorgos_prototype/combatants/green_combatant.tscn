@@ -1,14 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqaxsw16if0r0"]
+[gd_scene load_steps=13 format=3 uid="uid://bqaxsw16if0r0"]
 
 [ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_2d2p7"]
 [ext_resource type="Texture2D" uid="uid://dl3aoxui3wvrr" path="res://assets/alienGreen.png" id="2_61hhm"]
 [ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="2_t4dhd"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_v8cp6"]
 [ext_resource type="Texture2D" uid="uid://dw4exu0ayxch4" path="res://assets/p1_dead.png" id="3_7jlcv"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/aoe_attack.gd" id="3_qt7w7"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/move_attack.gd" id="4_okh7l"]
+[ext_resource type="Resource" uid="uid://dk3mj0p6xnswn" path="res://giorgos_prototype/resources/grid.tres" id="5_br36c"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="6_eu3qh"]
+
+[sub_resource type="Resource" id="Resource_qlgmm"]
+script = ExtResource("3_qt7w7")
+damage = 4
+range = 4
+cells = Array[Vector2]([Vector2(0, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(0, 2), Vector2(0, -2), Vector2(2, 2), Vector2(2, -2), Vector2(-2, 2), Vector2(-2, -2)])
+move_name = "floor spikes"
+move_time = 3
+
+[sub_resource type="Resource" id="Resource_vx05u"]
+script = ExtResource("4_okh7l")
+damage = 4
+range = 1
+move_range = 3
+move_name = "lance"
+move_time = 3
+
+[sub_resource type="Resource" id="Resource_a447c"]
+script = ExtResource("6_eu3qh")
+grid = ExtResource("5_br36c")
+move_name = "Move"
+move_time = 1
 
 [node name="GreenCombatant" type="Node" groups=["characters", "map_entity"]]
 script = ExtResource("1_2d2p7")
 character_name = "Green"
-health = 30
+health = 15
+moves = Array[ExtResource("2_v8cp6")]([SubResource("Resource_qlgmm"), SubResource("Resource_vx05u"), SubResource("Resource_a447c")])
 skin = ExtResource("2_61hhm")
 corpse_skin = ExtResource("3_7jlcv")
 

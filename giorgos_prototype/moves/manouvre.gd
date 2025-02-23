@@ -5,8 +5,7 @@ class_name ManouvreClass
 @export var grid: Resource = preload("res://giorgos_prototype/resources/grid.tres")
 
 func perform_move(character, parameters):
-	print(character.character_name + " is Moving to " + str(parameters["cell"]))
-	character.walk_along([parameters["cell"]])
+	character.move_to(parameters["cell"])
 	
 func get_parameters(character):
 	var parameters = {}

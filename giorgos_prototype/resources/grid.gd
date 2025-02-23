@@ -2,7 +2,7 @@ class_name Grid
 extends Resource
 
 @export var size := Vector2(3,3)
-@export var cell_size := Vector2(80,80)
+@export var cell_size := Vector2(40,40)
 @export var offset := Vector2(0,0)
 
 var _half_cell_size = cell_size/2
@@ -111,6 +111,8 @@ func calculate_line_V(start_cell, end_cell):
 	return line_points
 
 func calculate_line(start_cell, end_cell):
+	print(start_cell)
+	print(end_cell)
 	if abs(end_cell.x-start_cell.x) > abs(end_cell.y-start_cell.y):
 		return calculate_line_H(start_cell, end_cell) 
 	return calculate_line_V(start_cell, end_cell)

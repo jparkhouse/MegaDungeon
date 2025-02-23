@@ -110,6 +110,15 @@ func walk_along(path: PackedVector2Array) -> void:
 	self._is_walking = true
 		
 
+func move_to(end_cell):
+	var move_line = grid.calculate_line(cell, end_cell)
+	move_line.reverse()
+	for c in move_line:
+		if c not in get_parent().units:
+			print(character_name + " is Moving to " + str(c))
+			walk_along([c])
+			break
+
 func execute_move() -> void:
 	if queued_action != null:
 		moves[queued_action].perform_move(self, queued_action_parameters)
@@ -137,5 +146,13 @@ func die():
 	var corpse = corpse_scene.instantiate()
 	corpse.texture = corpse_skin
 	corpse.cell = cell
+	corpse.scale = Vector2(0.40, 0.40)
 	get_parent().add_child(corpse)
 	queue_free()
+
+func cancel_action():
+	for node in get_tree().get_nodes_in_group("cursor"):
+		if node in get_children():
+			print("found cursor")
+			node.queue_free()
+			

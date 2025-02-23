@@ -1,0 +1,40 @@
+[gd_scene load_steps=13 format=3 uid="uid://2bxj482fnrsu"]
+
+[ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_cx60k"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_tqhoy"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/attack.gd" id="3_flw8q"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/heal.gd" id="4_rax2x"]
+[ext_resource type="Resource" uid="uid://dk3mj0p6xnswn" path="res://giorgos_prototype/resources/grid.tres" id="5_725j5"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="6_ynxmv"]
+[ext_resource type="Texture2D" uid="uid://cl1gkftdmypef" path="res://assets/alienYellow.png" id="7_6ldfw"]
+[ext_resource type="Texture2D" uid="uid://dj5sihj5djjr7" path="res://assets/p4_dead.png" id="8_wgun1"]
+[ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="9_rcsas"]
+
+[sub_resource type="Resource" id="Resource_k5ves"]
+script = ExtResource("3_flw8q")
+damage = 4
+range = 1
+move_name = "Attack"
+move_time = 2
+
+[sub_resource type="Resource" id="Resource_6ls5y"]
+script = ExtResource("4_rax2x")
+damage = 7
+move_name = "Heal"
+move_time = 4
+
+[sub_resource type="Resource" id="Resource_axfhn"]
+script = ExtResource("6_ynxmv")
+grid = ExtResource("5_725j5")
+move_name = "Move"
+move_time = 1
+
+[node name="YellowCombatant" type="Node" groups=["characters", "map_entity"]]
+script = ExtResource("1_cx60k")
+character_name = "Yellow"
+health = 10
+moves = Array[ExtResource("2_tqhoy")]([SubResource("Resource_k5ves"), SubResource("Resource_6ls5y"), SubResource("Resource_axfhn")])
+skin = ExtResource("7_6ldfw")
+corpse_skin = ExtResource("8_wgun1")
+
+[node name="GenericCombatant" parent="." instance=ExtResource("9_rcsas")]

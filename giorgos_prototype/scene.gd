@@ -1,6 +1,10 @@
 extends Node
+
 @export var red_char_scene: PackedScene
 @export var blue_char_scene: PackedScene
+@export var yellow_char_scene: PackedScene
+@export var green_char_scene: PackedScene
+
 @export var obstacle_scene: PackedScene
 var current_time: int
 var current_character
@@ -21,21 +25,37 @@ func _ready() -> void:
 	
 	var char_1 = red_char_scene.instantiate()
 	char_1.cell = Vector2(2, 2)
-	$HUD.add_character_action_timeline(char_1)
 	$GameBoard.add_child(char_1)
 	
 	var char_2 = blue_char_scene.instantiate()
-	char_2.cell = Vector2(0, 0)
-	$HUD.add_character_action_timeline(char_2)
+	char_2.cell = Vector2(5, 4)
 	$GameBoard.add_child(char_2)
+
+	var char_3 = green_char_scene.instantiate()
+	char_3.cell = Vector2(4, 5)
+	$GameBoard.add_child(char_3)
 	
-	var obst_1 = obstacle_scene.instantiate()
-	obst_1.cell = Vector2(1,1)
-	$GameBoard.add_child(obst_1)
+	var char_4 = yellow_char_scene.instantiate()
+	char_4.cell = Vector2(0, 0)
+	$GameBoard.add_child(char_4)
+	
+	var obst = obstacle_scene.instantiate()
+	obst.cell = Vector2(1,1)
+	$GameBoard.add_child(obst)
+	obst = obstacle_scene.instantiate()
+	obst.cell = Vector2(3,2)
+	$GameBoard.add_child(obst)
+	obst = obstacle_scene.instantiate()
+	obst.cell = Vector2(4,3)
+	$GameBoard.add_child(obst)
+	obst = obstacle_scene.instantiate()
+	obst.cell = Vector2(1,4)
+	$GameBoard.add_child(obst)
 	
 	$GameBoard.reinitialize()
 	
 	for character in get_tree().get_nodes_in_group("characters"):
+		$HUD.add_character_action_timeline(character)
 		print(character.name)
 	perform_actions()
 	
@@ -74,6 +94,7 @@ func _process(delta: float) -> void:
 
 
 func _on_hud_action(ac_nr) -> void:
+	await current_character.cancel_action()
 	await current_character.queue_move(ac_nr)
 	await get_tree().create_timer(0.3).timeout
 	current_character.is_selected = false
