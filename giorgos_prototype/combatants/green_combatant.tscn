@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqaxsw16if0r0"]
+[gd_scene load_steps=15 format=3 uid="uid://bqaxsw16if0r0"]
 
 [ext_resource type="Script" path="res://giorgos_prototype/combatant.gd" id="1_2d2p7"]
-[ext_resource type="Texture2D" uid="uid://dl3aoxui3wvrr" path="res://assets/alienGreen.png" id="2_61hhm"]
 [ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="2_t4dhd"]
-[ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_v8cp6"]
+[ext_resource type="Script" path="res://giorgos_prototype/actions/move.gd" id="2_v8cp6"]
 [ext_resource type="Texture2D" uid="uid://dw4exu0ayxch4" path="res://assets/p1_dead.png" id="3_7jlcv"]
-[ext_resource type="Script" path="res://giorgos_prototype/moves/aoe_attack.gd" id="3_qt7w7"]
+[ext_resource type="Script" path="res://giorgos_prototype/actions/aoe_attack.gd" id="3_qt7w7"]
 [ext_resource type="Resource" uid="uid://dk3mj0p6xnswn" path="res://giorgos_prototype/resources/grid.tres" id="5_br36c"]
-[ext_resource type="Script" path="res://giorgos_prototype/moves/attack.gd" id="6_7sd1i"]
-[ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="6_eu3qh"]
+[ext_resource type="Script" path="res://giorgos_prototype/actions/attack.gd" id="6_7sd1i"]
+[ext_resource type="Script" path="res://giorgos_prototype/actions/manouvre.gd" id="6_eu3qh"]
+[ext_resource type="Texture2D" uid="uid://dqawfnpq1ny4k" path="res://assets/alienGreen_stand.png" id="7_k8dun"]
+[ext_resource type="Texture2D" uid="uid://crvq0dsuc8hyr" path="res://assets/p1_jump.png" id="9_nyspp"]
+[ext_resource type="Texture2D" uid="uid://ck5362ag1vbgq" path="res://assets/alienGreen_hurt.png" id="10_v7xwc"]
 
 [sub_resource type="Resource" id="Resource_uscch"]
 script = ExtResource("6_eu3qh")
@@ -20,23 +22,26 @@ action_time = 1
 script = ExtResource("3_qt7w7")
 damage = 3
 range = 2
-cells = Array[Vector2]([Vector2(0, 0)])
-action_name = ""
+cells = Array[Vector2]([Vector2(0, 0), Vector2(1, 0), Vector2(-1, 0), Vector2(2, 0), Vector2(-2, 0)])
+action_name = "line"
 action_time = 2
 
 [sub_resource type="Resource" id="Resource_04m0c"]
 script = ExtResource("6_7sd1i")
 damage = 3
 range = 1
-action_name = ""
+action_name = "attack"
 action_time = 3
 
 [node name="GreenCombatant" type="Node" groups=["characters", "map_entity"]]
 script = ExtResource("1_2d2p7")
 character_name = "Green"
-health = 15
+max_health = 10
 actions = Array[ExtResource("2_v8cp6")]([SubResource("Resource_uscch"), SubResource("Resource_qah0i"), SubResource("Resource_04m0c")])
-skin = ExtResource("2_61hhm")
+skin = ExtResource("7_k8dun")
 corpse_skin = ExtResource("3_7jlcv")
+act_skin = ExtResource("9_nyspp")
+hurt_skin = ExtResource("10_v7xwc")
 
 [node name="GenericCombatant" parent="." instance=ExtResource("2_t4dhd")]
+scale = Vector2(0.4, 0.4)

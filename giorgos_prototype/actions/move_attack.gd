@@ -8,6 +8,8 @@ class_name MoveAttackClass
 
 func perform_action(character, parameters):
 	var line_cells = character.grid.calculate_line(character.cell, parameters["target"].cell)
+	var normal_skin = character.skin
+	character.skin = character.act_skin
 	if len(line_cells) - 1 > move_range:
 		character.move_to(line_cells[move_range])
 	else:
@@ -18,6 +20,8 @@ func perform_action(character, parameters):
 	else:
 		print(character.character_name + " is attacking for " + str(damage) + " damage")
 		parameters["target"].take_damage(damage)
+	await character.get_tree().create_timer(1).timeout
+	character.skin = normal_skin
 	
 
 func get_parameters(character):

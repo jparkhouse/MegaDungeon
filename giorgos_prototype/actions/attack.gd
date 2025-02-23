@@ -12,7 +12,10 @@ func perform_action(character, parameters):
 	else:
 		print(character.character_name + " is attacking for " + str(damage) + " damage")
 		parameters["target"].take_damage(damage)
-	
+	var normal_skin = character.skin
+	character.skin = character.act_skin
+	await character.get_tree().create_timer(1).timeout
+	character.skin = normal_skin
 
 func get_parameters(character):
 	var parameters = {}

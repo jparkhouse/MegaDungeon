@@ -23,14 +23,14 @@ var health: int = max_health
 	set(value):
 		skin = value
 		if not _sprite:
-						# yield has been replaced with await
-						# and we await the value on the self object
 			await self.ready
 		_sprite.texture = value
 	get:
 		return _sprite.texture
 
 @export var corpse_skin: Texture
+@export var act_skin: Texture
+@export var hurt_skin: Texture
 
 @export var skin_offset := Vector2.ZERO :
 	set(value):
@@ -79,6 +79,7 @@ signal walk_finished
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_process(false)
+	health = max_health
 	# self.cell = grid.calculate_grid_coordinates(_generic_combatant.position)
 	_generic_combatant.position = grid.calculate_map_position(cell)
 	
@@ -132,6 +133,10 @@ func queue_action(action_nr) -> void:
 	emit_signal("acted", actions[action_nr].action_time)
 
 func take_damage(d):
+	var normal_skin = skin
+	skin = hurt_skin
+	await get_tree().create_timer(1).timeout
+	skin = normal_skin
 	health = health - d
 	print(character_name + "'s health is now " + str(health))
 	if health <= 0:

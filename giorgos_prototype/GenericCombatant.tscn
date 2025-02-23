@@ -64,8 +64,7 @@ loop = false
 
 [node name="Shadow" type="Sprite2D" parent="PathFollow2D"]
 modulate = Color(0.081, 0.081, 0.081, 0.4)
-position = Vector2(0, 25)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, 40)
 texture = ExtResource("1_id8uh")
 
 [node name="Sprite" type="Sprite2D" parent="PathFollow2D"]

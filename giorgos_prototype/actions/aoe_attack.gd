@@ -7,6 +7,10 @@ class_name AoeAttackClass
 @export var cells : Array[Vector2] = [Vector2(0,0)]
 
 func perform_action(character, parameters):
+	var normal_skin = character.skin
+	character.skin = character.act_skin
+	await character.get_tree().create_timer(1).timeout
+	character.skin = normal_skin
 	for c in cells:
 		if parameters["cell"]+c in character.get_parent().units:
 			character.get_parent().units[parameters["cell"]+c].take_damage(damage)
