@@ -65,14 +65,14 @@ func perform_actions() -> void:
 	for character in get_tree().get_nodes_in_group("characters"):
 		if current_time == character.next_turn:
 			current_character = character
-			current_character.execute_move()
+			current_character.execute_action()
 			print(character.character_name + "'s turn")
 			current_character.is_selected = true
-			$HUD/BottomPanel/Action_1.text = character.moves[0].move_name + " (" + str(character.moves[0].move_time) + "s)"
+			$HUD/BottomPanel/Action_1.text = character.actions[0].action_name + " (" + str(character.actions[0].action_time) + "s)"
 			$HUD/BottomPanel/Action_1.show()
-			$HUD/BottomPanel/Action_2.text = character.moves[1].move_name + " (" + str(character.moves[1].move_time) + "s)"
+			$HUD/BottomPanel/Action_2.text = character.actions[1].action_name + " (" + str(character.actions[1].action_time) + "s)"
 			$HUD/BottomPanel/Action_2.show()
-			$HUD/BottomPanel/Action_3.text = character.moves[2].move_name + " (" + str(character.moves[2].move_time) + "s)"
+			$HUD/BottomPanel/Action_3.text = character.actions[2].action_name + " (" + str(character.actions[2].action_time) + "s)"
 			$HUD/BottomPanel/Action_3.show()
 			$HUD/BottomPanel/Character_name.text = character.character_name
 			$HUD/BottomPanel/Character_name.show()
@@ -95,7 +95,7 @@ func _process(delta: float) -> void:
 
 func _on_hud_action(ac_nr) -> void:
 	await current_character.cancel_action()
-	await current_character.queue_move(ac_nr)
+	await current_character.queue_action(ac_nr)
 	await get_tree().create_timer(0.3).timeout
 	current_character.is_selected = false
 	perform_actions()

@@ -1,4 +1,4 @@
-extends MoveClass
+extends ActionClass
 
 class_name AoeAttackClass
 
@@ -6,7 +6,7 @@ class_name AoeAttackClass
 @export var range := 2
 @export var cells : Array[Vector2] = [Vector2(0,0)]
 
-func perform_move(character, parameters):
+func perform_action(character, parameters):
 	for c in cells:
 		if parameters["cell"]+c in character.get_parent().units:
 			character.get_parent().units[parameters["cell"]+c].take_damage(damage)

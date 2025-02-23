@@ -1,11 +1,11 @@
-extends MoveClass
+extends ActionClass
 
 class_name AttackClass
 
 @export var damage:    int
 @export var range := 1
 
-func perform_move(character, parameters):
+func perform_action(character, parameters):
 	var distance = character.grid.calculate_distance(character.cell, parameters["target"].cell)
 	if distance > range:
 		print(character.character_name + " failed to attack due to distance")

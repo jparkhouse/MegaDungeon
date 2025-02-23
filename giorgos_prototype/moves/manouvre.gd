@@ -1,10 +1,10 @@
-extends MoveClass
+extends ActionClass
 
 class_name ManouvreClass
 
 @export var grid: Resource = preload("res://giorgos_prototype/resources/grid.tres")
 
-func perform_move(character, parameters):
+func perform_action(character, parameters):
 	character.move_to(parameters["cell"])
 	
 func get_parameters(character):

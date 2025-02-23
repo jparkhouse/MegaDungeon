@@ -1,4 +1,4 @@
-extends MoveClass
+extends ActionClass
 
 class_name MoveAttackClass
 
@@ -6,7 +6,7 @@ class_name MoveAttackClass
 @export var range := 1
 @export var move_range := 1
 
-func perform_move(character, parameters):
+func perform_action(character, parameters):
 	var line_cells = character.grid.calculate_line(character.cell, parameters["target"].cell)
 	if len(line_cells) - 1 > move_range:
 		character.move_to(line_cells[move_range])

@@ -5,38 +5,37 @@
 [ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_bfkwv"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/move_attack.gd" id="3_1hrt7"]
 [ext_resource type="Resource" uid="uid://dk3mj0p6xnswn" path="res://giorgos_prototype/resources/grid.tres" id="4_davdk"]
-[ext_resource type="Script" path="res://giorgos_prototype/moves/aoe_attack.gd" id="4_q1esj"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="5_n1g8m"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/attack.gd" id="6_2jwvd"]
 [ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="6_cqe0h"]
 [ext_resource type="Texture2D" uid="uid://dv3l42pt3ytkw" path="res://assets/p3_dead.png" id="7_0ikma"]
 
-[sub_resource type="Resource" id="Resource_4b3mk"]
+[sub_resource type="Resource" id="Resource_78yrm"]
+script = ExtResource("5_n1g8m")
+grid = ExtResource("4_davdk")
+action_name = ""
+action_time = 1
+
+[sub_resource type="Resource" id="Resource_f7gmn"]
 script = ExtResource("3_1hrt7")
 damage = 3
 range = 1
-move_range = 1
-move_name = "M Attack"
-move_time = 2
+move_range = 2
+action_name = ""
+action_time = 2
 
-[sub_resource type="Resource" id="Resource_ubxk4"]
-script = ExtResource("4_q1esj")
-damage = 3
-range = 2
-cells = Array[Vector2]([Vector2(0, 0), Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)])
-move_name = "AOE attack"
-move_time = 2
-
-[sub_resource type="Resource" id="Resource_axfhn"]
-script = ExtResource("5_n1g8m")
-grid = ExtResource("4_davdk")
-move_name = "Move"
-move_time = 1
+[sub_resource type="Resource" id="Resource_wrnnn"]
+script = ExtResource("6_2jwvd")
+damage = 6
+range = 1
+action_name = ""
+action_time = 3
 
 [node name="RedCombatant" type="Node" groups=["characters", "map_entity"]]
 script = ExtResource("1_iraob")
 character_name = "Red"
 health = 15
-moves = Array[ExtResource("2_bfkwv")]([SubResource("Resource_4b3mk"), SubResource("Resource_ubxk4"), SubResource("Resource_axfhn")])
+actions = Array[ExtResource("2_bfkwv")]([SubResource("Resource_78yrm"), SubResource("Resource_f7gmn"), SubResource("Resource_wrnnn")])
 skin = ExtResource("2_08j66")
 corpse_skin = ExtResource("7_0ikma")
 

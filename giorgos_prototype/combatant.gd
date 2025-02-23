@@ -8,10 +8,11 @@ class_name Combatant
 
 @export var character_name: String
 
-@export var health: int
+@export var max_health: int
+var health: int = max_health
 
 
-@export var moves: Array[MoveClass]
+@export var actions: Array[ActionClass]
 
 @onready var _sprite = $GenericCombatant/PathFollow2D/Sprite
 @onready var _anim_player = $GenericCombatant/AnimationPlayer
@@ -72,7 +73,7 @@ var _is_walking := false :
 var next_turn
 var queued_action
 var queued_action_parameters
-signal moved
+signal acted
 signal walk_finished
 
 # Called when the node enters the scene tree for the first time.
@@ -119,19 +120,16 @@ func move_to(end_cell):
 			walk_along([c])
 			break
 
-func execute_move() -> void:
+func execute_action() -> void:
 	if queued_action != null:
-		moves[queued_action].perform_move(self, queued_action_parameters)
+		actions[queued_action].perform_action(self, queued_action_parameters)
 	queued_action = null
 
-func queue_move(move_nr) -> void:
-	next_turn += moves[move_nr].move_time
-	queued_action = move_nr
-	queued_action_parameters = await moves[queued_action].get_parameters(self)
-	emit_signal("moved", moves[move_nr].move_time)
-
-func add_move_times():
-	pass
+func queue_action(action_nr) -> void:
+	next_turn += actions[action_nr].action_time
+	queued_action = action_nr
+	queued_action_parameters = await actions[queued_action].get_parameters(self)
+	emit_signal("acted", actions[action_nr].action_time)
 
 func take_damage(d):
 	health = health - d
@@ -141,6 +139,8 @@ func take_damage(d):
 
 func heal(d):
 	health = health + d
+	if health > max_health:
+		health = max_health
 
 func die():
 	var corpse = corpse_scene.instantiate()

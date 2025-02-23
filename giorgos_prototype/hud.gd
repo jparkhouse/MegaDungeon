@@ -22,6 +22,6 @@ func add_character_action_timeline(char):
 	var cat = action_timeline_scene.instantiate()
 	cat.add_name(char.character_name)
 	cat.name = char.character_name
-	char.moved.connect(Callable(cat, "_on_character_moved"))
+	char.acted.connect(Callable(cat, "_on_character_moved"))
 	character_action_timelines[char.character_name] = cat
 	$ActionTimelineVbox.add_child(character_action_timelines[char.character_name])

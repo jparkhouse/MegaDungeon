@@ -6,37 +6,36 @@
 [ext_resource type="Script" path="res://giorgos_prototype/moves/move.gd" id="2_v8cp6"]
 [ext_resource type="Texture2D" uid="uid://dw4exu0ayxch4" path="res://assets/p1_dead.png" id="3_7jlcv"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/aoe_attack.gd" id="3_qt7w7"]
-[ext_resource type="Script" path="res://giorgos_prototype/moves/move_attack.gd" id="4_okh7l"]
 [ext_resource type="Resource" uid="uid://dk3mj0p6xnswn" path="res://giorgos_prototype/resources/grid.tres" id="5_br36c"]
+[ext_resource type="Script" path="res://giorgos_prototype/moves/attack.gd" id="6_7sd1i"]
 [ext_resource type="Script" path="res://giorgos_prototype/moves/manouvre.gd" id="6_eu3qh"]
 
-[sub_resource type="Resource" id="Resource_qlgmm"]
-script = ExtResource("3_qt7w7")
-damage = 4
-range = 4
-cells = Array[Vector2]([Vector2(0, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(0, 2), Vector2(0, -2), Vector2(2, 2), Vector2(2, -2), Vector2(-2, 2), Vector2(-2, -2)])
-move_name = "floor spikes"
-move_time = 3
-
-[sub_resource type="Resource" id="Resource_vx05u"]
-script = ExtResource("4_okh7l")
-damage = 4
-range = 1
-move_range = 3
-move_name = "lance"
-move_time = 3
-
-[sub_resource type="Resource" id="Resource_a447c"]
+[sub_resource type="Resource" id="Resource_uscch"]
 script = ExtResource("6_eu3qh")
 grid = ExtResource("5_br36c")
-move_name = "Move"
-move_time = 1
+action_name = ""
+action_time = 1
+
+[sub_resource type="Resource" id="Resource_qah0i"]
+script = ExtResource("3_qt7w7")
+damage = 3
+range = 2
+cells = Array[Vector2]([Vector2(0, 0)])
+action_name = ""
+action_time = 2
+
+[sub_resource type="Resource" id="Resource_04m0c"]
+script = ExtResource("6_7sd1i")
+damage = 3
+range = 1
+action_name = ""
+action_time = 3
 
 [node name="GreenCombatant" type="Node" groups=["characters", "map_entity"]]
 script = ExtResource("1_2d2p7")
 character_name = "Green"
 health = 15
-moves = Array[ExtResource("2_v8cp6")]([SubResource("Resource_qlgmm"), SubResource("Resource_vx05u"), SubResource("Resource_a447c")])
+actions = Array[ExtResource("2_v8cp6")]([SubResource("Resource_uscch"), SubResource("Resource_qah0i"), SubResource("Resource_04m0c")])
 skin = ExtResource("2_61hhm")
 corpse_skin = ExtResource("3_7jlcv")
 

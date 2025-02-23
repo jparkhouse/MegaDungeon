@@ -10,7 +10,6 @@ var _half_cell_size = cell_size/2
 func calculate_map_position(grid_position: Vector2) -> Vector2:
 	return grid_position * cell_size + _half_cell_size + offset
 
-
 func calculate_grid_coordinates(map_position: Vector2) -> Vector2:
 	return ((map_position - offset) / cell_size).floor()
 

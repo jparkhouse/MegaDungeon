@@ -10,30 +10,30 @@
 [ext_resource type="Texture2D" uid="uid://dj5sihj5djjr7" path="res://assets/p4_dead.png" id="8_wgun1"]
 [ext_resource type="PackedScene" uid="uid://cq3an57jrn805" path="res://giorgos_prototype/GenericCombatant.tscn" id="9_rcsas"]
 
-[sub_resource type="Resource" id="Resource_k5ves"]
-script = ExtResource("3_flw8q")
-damage = 4
-range = 1
-move_name = "Attack"
-move_time = 2
-
-[sub_resource type="Resource" id="Resource_6ls5y"]
-script = ExtResource("4_rax2x")
-damage = 7
-move_name = "Heal"
-move_time = 4
-
-[sub_resource type="Resource" id="Resource_axfhn"]
+[sub_resource type="Resource" id="Resource_jt2p7"]
 script = ExtResource("6_ynxmv")
 grid = ExtResource("5_725j5")
-move_name = "Move"
-move_time = 1
+action_name = "Move"
+action_time = 1
+
+[sub_resource type="Resource" id="Resource_3561t"]
+script = ExtResource("3_flw8q")
+damage = 4
+range = 3
+action_name = "Attack"
+action_time = 2
+
+[sub_resource type="Resource" id="Resource_kgm6t"]
+script = ExtResource("4_rax2x")
+damage = 3
+action_name = "Heal"
+action_time = 2
 
 [node name="YellowCombatant" type="Node" groups=["characters", "map_entity"]]
 script = ExtResource("1_cx60k")
 character_name = "Yellow"
-health = 10
-moves = Array[ExtResource("2_tqhoy")]([SubResource("Resource_k5ves"), SubResource("Resource_6ls5y"), SubResource("Resource_axfhn")])
+max_health = 10
+actions = Array[ExtResource("2_tqhoy")]([SubResource("Resource_jt2p7"), SubResource("Resource_3561t"), SubResource("Resource_kgm6t")])
 skin = ExtResource("7_6ldfw")
 corpse_skin = ExtResource("8_wgun1")
 

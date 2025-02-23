@@ -1,12 +1,12 @@
 extends Resource
 
-class_name MoveClass
+class_name ActionClass
 
-@export var move_name = ""
-@export var move_time: int
+@export var action_name = ""
+@export var action_time: int
 var cursor_scene = preload("res://giorgos_prototype/cursor.tscn")
 
-func perform_move(character, parameters):
+func perform_action(character, parameters):
 	pass
 	
 func get_parameters(character):
