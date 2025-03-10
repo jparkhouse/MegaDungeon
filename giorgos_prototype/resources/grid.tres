@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Grid" load_steps=2 format=3 uid="uid://dk3mj0p6xnswn"]
-
-[ext_resource type="Script" path="res://giorgos_prototype/resources/grid.gd" id="1_4o1dd"]
-
-[resource]
-script = ExtResource("1_4o1dd")
-size = Vector2(6, 6)
-cell_size = Vector2(40, 40)
-offset = Vector2(0, 0)

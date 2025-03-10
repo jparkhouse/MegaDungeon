@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SquareGrid" load_steps=2 format=3 uid="uid://dodkgchtfqapk"]
+
+[ext_resource type="Script" path="res://resources/square_grid.gd" id="1_tcma4"]
+
+[resource]
+script = ExtResource("1_tcma4")
+size = Vector2(6, 6)
+cell_size = Vector2(40, 40)
+offset = Vector2(0, 0)

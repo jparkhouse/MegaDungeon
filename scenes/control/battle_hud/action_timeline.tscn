@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdnsihqxawe5q"]
+
+[ext_resource type="Script" path="res://scenes/control/battle_hud/action_timeline.gd" id="1_omdpe"]
+
+[node name="ActionTimeline" type="ColorRect" groups=["action_timeline"]]
+custom_minimum_size = Vector2(800, 30)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -15.0
+offset_right = 400.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.501407, 0.501406, 0.501406, 1)
+script = ExtResource("1_omdpe")
+on_colour = Color(0.292863, 0.843425, 0.60438, 1)
+off_colour = Color(1, 1, 1, 1)
+
+[node name="second_1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 5.0
+offset_right = 235.0
+offset_bottom = 25.0
+color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[node name="second_2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 5.0
+offset_right = 305.0
+offset_bottom = 25.0
+color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[node name="second_3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 5.0
+offset_right = 375.0
+offset_bottom = 25.0
+color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[node name="second_4" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 5.0
+offset_right = 445.0
+offset_bottom = 25.0
+color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[node name="second_5" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 5.0
+offset_right = 515.0
+offset_bottom = 25.0
+color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[node name="second_6" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 5.0
+offset_right = 585.0
+offset_bottom = 25.0
+color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[node name="second_7" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 595.0
+offset_top = 5.0
+offset_right = 655.0
+offset_bottom = 25.0
+color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[node name="second_8" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 5.0
+offset_right = 725.0
+offset_bottom = 25.0
+color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[node name="second_9" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 5.0
+offset_right = 795.0
+offset_bottom = 25.0
+color = Color(0.851769, 0.851769, 0.851769, 1)
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -11.5
+offset_right = 96.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Character A"
