@@ -102,11 +102,11 @@ func execute_action() -> void:
 		await actions[queued_action].perform_action(self, queued_action_parameters)
 	queued_action = null
 
-func queue_action(action_nr : int) -> void:
-	next_turn += actions[action_nr].action_time
-	queued_action = action_nr
+func queue_action(action_index : int) -> void:
+	next_turn += actions[action_index].action_time
+	queued_action = action_index
 	queued_action_parameters = await actions[queued_action].get_parameters(self)
-	emit_signal("acted", actions[action_nr].action_time)
+	emit_signal("acted", actions[action_index].action_time)
 
 func cancel_action() -> void:
 	for node in get_tree().get_nodes_in_group("cursor"):
