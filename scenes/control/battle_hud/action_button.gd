@@ -1,6 +1,6 @@
 extends Button
 
-var action_key
+var action_key : int
 signal action_button_pressed
 
 func _on_pressed() -> void:

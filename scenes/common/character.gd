@@ -63,14 +63,16 @@ func _process(delta: float) -> void:
 		$Visuals.curve.clear_points()
 		emit_signal("walk_finished")
 
-func make_selected(selected):
+func make_selected(selected) -> void:
 	is_selected = selected
 	if selected:
 		if $Visuals/AnimationPlayer.current_animation != "selected" and $Visuals/AnimationPlayer.current_animation != "idle":
 			await $Visuals/AnimationPlayer.animation_finished
+		$Visuals/AnimationPlayer.play("selected")
 	else:
 		if $Visuals/AnimationPlayer.current_animation != "selected" and $Visuals/AnimationPlayer.current_animation != "idle":
 			await $Visuals/AnimationPlayer.animation_finished
+		$Visuals/AnimationPlayer.play("idle")
 
 func walk_along(path: PackedVector2Array) -> void:
 	if not path.size():
@@ -83,7 +85,7 @@ func walk_along(path: PackedVector2Array) -> void:
 	cell = path[-1]
 	self._is_walking = true
 
-func move_to(end_cell):
+func move_to(end_cell : Vector2) -> void:
 	var move_line = grid.calculate_line(cell, end_cell)
 	move_line.reverse()
 	for c in move_line:
@@ -100,30 +102,30 @@ func execute_action() -> void:
 		await actions[queued_action].perform_action(self, queued_action_parameters)
 	queued_action = null
 
-func queue_action(action_nr) -> void:
+func queue_action(action_nr : int) -> void:
 	next_turn += actions[action_nr].action_time
 	queued_action = action_nr
 	queued_action_parameters = await actions[queued_action].get_parameters(self)
 	emit_signal("acted", actions[action_nr].action_time)
 
-func cancel_action():
+func cancel_action() -> void:
 	for node in get_tree().get_nodes_in_group("cursor"):
 		if node in get_children():
 			node.queue_free()
 
-func take_damage(d):
+func take_damage(d : int) -> void:
 	play_animation("damage")
 	health = health - d
 	print(character_name + "'s health is now " + str(health))
 	if health <= 0:
 		die()
 
-func heal(d):
+func heal(d : int) -> void:
 	health = health + d
 	if health > max_health:
 		health = max_health
 
-func die():
+func die() -> void:
 	var corpse = corpse_scene.instantiate()
 	corpse.skin = $Visuals/PathFollow2D/Sprite.texture
 	corpse.set_skin_frame($Visuals/PathFollow2D/Sprite.hframes, $Visuals/PathFollow2D/Sprite.vframes, 3)
@@ -132,7 +134,7 @@ func die():
 	get_parent().add_child(corpse)
 	queue_free()
 
-func play_animation(animation):
+func play_animation(animation : String) -> void:
 	var current_animation = $Visuals/AnimationPlayer.current_animation
 	$Visuals/AnimationPlayer.play(animation)
 	await $Visuals/AnimationPlayer.animation_finished

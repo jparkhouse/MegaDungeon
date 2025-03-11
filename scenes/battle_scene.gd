@@ -1,7 +1,7 @@
 extends Node
 
 var current_time: int
-var current_character
+var current_character : Character
 
 @export var grid: Resource = preload("res://resources/square_grid.tres")
 
@@ -48,11 +48,11 @@ func perform_actions() -> void:
 	await get_tree().create_timer(0.3).timeout
 	await perform_actions()
 
-func advance_time():
+func advance_time() -> void:
 	current_time += 1
 	emit_signal("time_passed")
 
-func _on_hud_action(ac_nr) -> void:
+func _on_hud_action(ac_nr : int) -> void:
 	await current_character.cancel_action()
 	await current_character.queue_action(ac_nr)
 	await get_tree().create_timer(0.3).timeout

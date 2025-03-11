@@ -19,7 +19,7 @@ var cell := Vector2.ZERO :
 func _ready() -> void:
 	position = grid.calculate_map_position(cell)
 	
-func take_damage(damage):
+func take_damage(damage : int) -> void:
 	queue_free()
 	
 func set_skin_frame(h, v, fr):
