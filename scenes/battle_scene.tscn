@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=4 uid="uid://uni8d21y278y"]
+
+[ext_resource type="Script" path="res://scenes/battle_scene.gd" id="1_5xj18"]
+[ext_resource type="Script" path="res://scenes/game_board.gd" id="2_blrr5"]
+[ext_resource type="PackedScene" uid="uid://b36x56d1bv0as" path="res://scenes/control/battle_hud/hud.tscn" id="3_objlv"]
+[ext_resource type="TileSet" uid="uid://c13eminb2mnfa" path="res://resources/tileset.tres" id="4_q3584"]
+
+[node name="Battle_scene" type="Node"]
+script = ExtResource("1_5xj18")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(456, 160)
+scale = Vector2(2.5, 2.5)
+tile_map_data = PackedByteArray("AAAAAAAAAAAUAAsAAAABAAAAAAAUAAsAAAACAAAAAAAUAAsAAAADAAAAAAAUAAsAAAAEAAAAAAAUAAsAAAAFAAAAAAAUAAsAAAAFAAEAAAAUAAsAAAAFAAIAAAAUAAsAAAAFAAMAAAAUAAsAAAAFAAQAAAAUAAsAAAAFAAUAAAAUAAsAAAAEAAUAAAAUAAsAAAADAAUAAAAUAAsAAAACAAUAAAAUAAsAAAABAAUAAAAUAAsAAAAAAAUAAAAUAAsAAAAAAAQAAAAUAAsAAAAAAAMAAAAUAAsAAAAAAAIAAAAUAAsAAAAAAAEAAAAUAAsAAAABAAEAAAAUAAsAAAACAAEAAAAUAAsAAAADAAEAAAAUAAsAAAAEAAEAAAAUAAsAAAAEAAIAAAAUAAsAAAADAAIAAAAUAAsAAAACAAIAAAAUAAsAAAACAAMAAAAUAAsAAAADAAMAAAAUAAsAAAADAAQAAAAUAAsAAAAEAAQAAAAUAAsAAAAEAAMAAAAUAAsAAAACAAQAAAAUAAsAAAABAAQAAAAUAAsAAAABAAMAAAAUAAsAAAABAAIAAAAUAAsAAAA=")
+tile_set = ExtResource("4_q3584")
+
+[node name="HUD" parent="." instance=ExtResource("3_objlv")]
+
+[node name="GameBoard" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("2_blrr5")
+
+[connection signal="action" from="HUD" to="." method="_on_hud_action"]
