@@ -2,7 +2,7 @@ class_name SquareGrid
 extends Resource
 
 
-@export var size := Vector2(3,3)
+@export var size := Vector2i(3,3)
 @export var cell_size := Vector2(40,40)
 @export var offset := Vector2(0,0)
 

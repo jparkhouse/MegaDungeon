@@ -6,8 +6,9 @@
 script = ExtResource("1_lg3vq")
 
 [node name="ActionTimelineVbox" type="VBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 
 [node name="BottomPanel" type="ColorRect" parent="."]
 anchors_preset = 12

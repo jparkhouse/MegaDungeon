@@ -33,11 +33,11 @@ var cell := Vector2.ZERO :
 	get:
 		return cell
 
-
+@onready var timer := $Timer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
-	$Timer.wait_time = ui_cooldown
+	timer.wait_time = ui_cooldown
 	position = grid.calculate_map_position(cell)
 
 

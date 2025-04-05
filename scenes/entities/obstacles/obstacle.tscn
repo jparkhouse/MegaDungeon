@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp3tgr1qgljyj"]
-
-[ext_resource type="Texture2D" uid="uid://dywy6l0b50bb0" path="res://assets/images/snailShell.png" id="1_08574"]
-[ext_resource type="Script" path="res://scenes/entities/obstacles/obstacle.gd" id="2_jw57u"]
-
-[node name="Obstacle" type="Sprite2D" groups=["damagable", "map_entity", "obstacle"]]
-texture = ExtResource("1_08574")
-script = ExtResource("2_jw57u")
-skin = ExtResource("1_08574")

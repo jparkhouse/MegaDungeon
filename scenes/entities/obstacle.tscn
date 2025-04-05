@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp3tgr1qgljyj"]
+
+[ext_resource type="Script" path="res://scenes/entities/obstacle.gd" id="1_k2lvo"]
+
+[node name="Obstacle" type="Node" groups=["damagable", "map_entity", "obstacle"]]
+script = ExtResource("1_k2lvo")
+
+[node name="Sprite" type="Sprite2D" parent="."]

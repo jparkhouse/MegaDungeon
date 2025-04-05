@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=20 format=3 uid="uid://duhoe3v7hkk6i"]
+
+[ext_resource type="Script" path="res://resources/entity.gd" id="1_6mg8r"]
+[ext_resource type="Script" path="res://resources/room_data.gd" id="2_da18b"]
+[ext_resource type="Script" path="res://scenes/common/action.gd" id="2_mijka"]
+[ext_resource type="Resource" uid="uid://dodkgchtfqapk" path="res://resources/square_grid.tres" id="3_h6lpo"]
+[ext_resource type="Script" path="res://scenes/actions/move.gd" id="4_48wx7"]
+[ext_resource type="Script" path="res://scenes/actions/attack.gd" id="5_fc8da"]
+[ext_resource type="Script" path="res://scenes/actions/aoe_attack.gd" id="6_ofuio"]
+[ext_resource type="Script" path="res://resources/character_data.gd" id="7_rffij"]
+[ext_resource type="Texture2D" uid="uid://bltn4o3m7gg6y" path="res://assets/images/character_spritesheets/green_character.png" id="8_81sfh"]
+[ext_resource type="Script" path="res://scenes/actions/move_attack.gd" id="9_cclt2"]
+[ext_resource type="Texture2D" uid="uid://bcem8bm3kt5pu" path="res://assets/images/character_spritesheets/red_character.png" id="10_tc33o"]
+
+[sub_resource type="Resource" id="Resource_5aaan"]
+script = ExtResource("4_48wx7")
+grid = ExtResource("3_h6lpo")
+action_name = "move"
+action_time = 1
+
+[sub_resource type="Resource" id="Resource_v7o3w"]
+script = ExtResource("5_fc8da")
+damage = 15
+range = 2
+action_name = "attack"
+action_time = 2
+
+[sub_resource type="Resource" id="Resource_oqhdp"]
+script = ExtResource("6_ofuio")
+damage = 5
+range = 2
+cells = Array[Vector2]([Vector2(0, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1), Vector2(0, -1)])
+action_name = "aoe"
+action_time = 3
+
+[sub_resource type="Resource" id="Resource_mbpv8"]
+resource_local_to_scene = true
+script = ExtResource("7_rffij")
+skin = ExtResource("8_81sfh")
+actions = Array[ExtResource("2_mijka")]([SubResource("Resource_5aaan"), SubResource("Resource_v7o3w"), SubResource("Resource_oqhdp")])
+character_name = "green 1"
+max_health = 10
+move_range = 2
+health = 10
+cell = Vector2(0, 1)
+
+[sub_resource type="Resource" id="Resource_akvnr"]
+resource_local_to_scene = true
+script = ExtResource("7_rffij")
+skin = ExtResource("8_81sfh")
+actions = Array[ExtResource("2_mijka")]([SubResource("Resource_5aaan"), SubResource("Resource_v7o3w"), SubResource("Resource_oqhdp")])
+character_name = "green 2"
+max_health = 10
+move_range = 2
+health = 10
+cell = Vector2(2, 1)
+
+[sub_resource type="Resource" id="Resource_kxprf"]
+script = ExtResource("4_48wx7")
+grid = ExtResource("3_h6lpo")
+action_name = "move"
+action_time = 1
+
+[sub_resource type="Resource" id="Resource_kokyb"]
+script = ExtResource("9_cclt2")
+damage = 10
+range = 1
+move_range = 1
+action_name = "charge"
+action_time = 2
+
+[sub_resource type="Resource" id="Resource_70845"]
+resource_local_to_scene = true
+script = ExtResource("7_rffij")
+skin = ExtResource("10_tc33o")
+actions = Array[ExtResource("2_mijka")]([SubResource("Resource_kxprf"), SubResource("Resource_kokyb")])
+character_name = "red"
+max_health = 15
+move_range = 2
+health = 15
+cell = Vector2(3, 3)
+
+[resource]
+script = ExtResource("2_da18b")
+entities = Array[ExtResource("1_6mg8r")]([SubResource("Resource_mbpv8"), SubResource("Resource_akvnr"), SubResource("Resource_70845")])
+room_size = Vector2i(5, 5)
+ground_atlas = Array[Vector2i]([Vector2i(9, 8), Vector2i(16, 10)])

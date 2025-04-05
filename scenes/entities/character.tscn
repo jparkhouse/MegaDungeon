@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://b3aklxlkoj22j"]
 
-[ext_resource type="Script" path="res://scenes/common/character.gd" id="1_mw27q"]
-[ext_resource type="Texture2D" uid="uid://bltn4o3m7gg6y" path="res://assets/images/character_spritesheets/green_character.png" id="2_c63ty"]
-[ext_resource type="Texture2D" uid="uid://d2887uylef2t3" path="res://assets/images/unit_shadow.svg" id="2_cckcl"]
+[ext_resource type="Script" path="res://scenes/entities/character.gd" id="1_wm5ti"]
+[ext_resource type="Texture2D" uid="uid://d2887uylef2t3" path="res://assets/images/unit_shadow.svg" id="2_oqxej"]
+[ext_resource type="Texture2D" uid="uid://bltn4o3m7gg6y" path="res://assets/images/character_spritesheets/green_character.png" id="3_bs7df"]
 
 [sub_resource type="Curve2D" id="Curve2D_6o237"]
 
@@ -170,7 +170,7 @@ _data = {
 }
 
 [node name="Character" type="Node" groups=["character", "damagable", "map_entity", "obstacle"]]
-script = ExtResource("1_mw27q")
+script = ExtResource("1_wm5ti")
 
 [node name="Visuals" type="Path2D" parent="."]
 curve = SubResource("Curve2D_6o237")
@@ -183,12 +183,12 @@ loop = false
 modulate = Color(0, 0, 0, 0.392157)
 position = Vector2(0, 20)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_cckcl")
+texture = ExtResource("2_oqxej")
 
 [node name="Sprite" type="Sprite2D" parent="Visuals/PathFollow2D"]
 texture_filter = 1
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_c63ty")
+texture = ExtResource("3_bs7df")
 hframes = 2
 vframes = 2
 

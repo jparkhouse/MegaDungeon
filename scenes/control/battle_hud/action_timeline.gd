@@ -5,6 +5,8 @@ var rects_on : int
 @export var on_colour: Color
 @export var off_colour: Color
 
+@onready var _name_label := $NameLabel
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rects_on = 0
@@ -18,7 +20,7 @@ func _ready() -> void:
 		$second_7, 
 		$second_8, 
 		$second_9
-		]
+	]
 
 func turn_on(n_rects: int) -> void:
 	rects_on = n_rects
@@ -30,13 +32,13 @@ func turn_on(n_rects: int) -> void:
 	pass
 
 func make_active() -> void:
-	$NameLabel.set("theme_override_colors/font_color",on_colour)
+	_name_label.set("theme_override_colors/font_color",on_colour)
 	
 func make_inactive() -> void:
-	$NameLabel.set("theme_override_colors/font_color",off_colour)
+	_name_label.set("theme_override_colors/font_color",off_colour)
 
 func add_name(char_name : String) -> void:
-	$NameLabel.text = char_name
+	_name_label.text = char_name
 	
 func _on_character_acted(action_time : int) -> void:
 	turn_on(action_time)

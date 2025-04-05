@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=11 format=3 uid="uid://dbntiskwox1bp"]
+
+[ext_resource type="Script" path="res://scenes/common/action.gd" id="1_1vuat"]
+[ext_resource type="Script" path="res://resources/character_data.gd" id="2_j3ngl"]
+[ext_resource type="Resource" uid="uid://dodkgchtfqapk" path="res://resources/square_grid.tres" id="2_mu87c"]
+[ext_resource type="Script" path="res://scenes/actions/move.gd" id="3_e3372"]
+[ext_resource type="Script" path="res://scenes/actions/attack.gd" id="4_0ebwh"]
+[ext_resource type="Script" path="res://scenes/actions/aoe_attack.gd" id="5_qytfq"]
+[ext_resource type="Texture2D" uid="uid://bltn4o3m7gg6y" path="res://assets/images/character_spritesheets/green_character.png" id="7_1okhj"]
+
+[sub_resource type="Resource" id="Resource_5aaan"]
+script = ExtResource("3_e3372")
+grid = ExtResource("2_mu87c")
+action_name = "move"
+action_time = 1
+
+[sub_resource type="Resource" id="Resource_v7o3w"]
+script = ExtResource("4_0ebwh")
+damage = 15
+range = 2
+action_name = "attack"
+action_time = 2
+
+[sub_resource type="Resource" id="Resource_oqhdp"]
+script = ExtResource("5_qytfq")
+damage = 5
+range = 2
+cells = Array[Vector2]([Vector2(0, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1), Vector2(0, -1)])
+action_name = "aoe"
+action_time = 3
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_j3ngl")
+skin = ExtResource("7_1okhj")
+actions = Array[ExtResource("1_1vuat")]([SubResource("Resource_5aaan"), SubResource("Resource_v7o3w"), SubResource("Resource_oqhdp")])
+character_name = "green 1"
+max_health = 10
+move_range = 2
+health = 10
+cell = Vector2(0, 1)

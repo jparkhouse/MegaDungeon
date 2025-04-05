@@ -7,31 +7,50 @@ var current_character : Character
 
 signal time_passed
 
-@export var green_char_scene := preload("res://scenes/entities/combatants/green_character.tscn")
-@export var red_char_scene := preload("res://scenes/entities/combatants/red_character.tscn")
+
+@onready var _tile_map_layer := $GameBoard/TileMapLayer
+@onready var _hud := $HUD
+
+var game_board : GameBoard
+var current_room := 0
+var room_scene : PackedScene = preload("res://scenes/room.tscn")
+var rooms_data := [
+	preload("res://resources/rooms/room_square.tres"),
+	preload("res://resources/rooms/room_long.tres")
+]
 
 func _ready() -> void:
-	grid.offset = $TileMapLayer.position
+	init_room(current_room)
+
+func init_room(room_id:int) -> void:
+	game_board = room_scene.instantiate()
+	game_board.data = rooms_data[room_id]
+	add_child(game_board)
 	current_time = 0
-	
-	## initialise characters
-	var green_char = green_char_scene.instantiate()
-	green_char.cell = Vector2(4, 5)
-	$GameBoard.add_child(green_char)
-	var red_char = red_char_scene.instantiate()
-	red_char.cell = Vector2(2, 1)
-	$GameBoard.add_child(red_char)
-	
-	$GameBoard.reinitialize()
+	start_battle()
+
+func next_room() -> void:
+	rooms_data[current_room] = game_board.export_data()
+	current_room = (current_room+1)%len(rooms_data)
+	game_board.queue_free()
+	_hud.clear_all_character_action_timelines()
+	await get_tree().process_frame
+	init_room(current_room)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("spacebar"):
+		next_room()
+
+func start_battle() -> void:
+	game_board.reinitialize()
 	
 	for character in get_tree().get_nodes_in_group("character"):
-		$HUD.add_character_action_timeline(character)
-		print(character.name)
+		_hud.add_character_action_timeline(character)
 	perform_actions()
-
+	
 func perform_actions() -> void:
-	$GameBoard.reinitialize()
-	$HUD.clear_buttons()
+	game_board.reinitialize()
+	_hud.clear_buttons()
 	for character in get_tree().get_nodes_in_group("character"):
 		if current_time == character.next_turn:
 			current_character = character
@@ -39,10 +58,8 @@ func perform_actions() -> void:
 			print(character.character_name + "'s turn")
 			current_character.make_selected(true)
 			for action in character.actions:
-				$HUD.add_action(action)
-			$HUD/BottomPanel/HBoxContainer/CharacterName.text = character.character_name
-			$HUD/BottomPanel/HBoxContainer/CharacterName.show()
-			$HUD/ActionTimelineVbox.get_node(current_character.character_name).make_active()
+				_hud.add_action(action)
+			_hud.change_active_character(current_character)
 			return
 	advance_time()
 	await get_tree().create_timer(0.3).timeout
