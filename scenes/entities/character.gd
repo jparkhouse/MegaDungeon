@@ -41,6 +41,7 @@ var is_selected := false
 
 signal acted
 signal walk_finished
+signal died
 
 var _is_walking := false :
 	set(value):
@@ -133,6 +134,7 @@ func heal(d : int) -> void:
 		health = max_health
 
 func die() -> void:
+	emit_signal("died", self)
 	var corpse = corpse_scene.instantiate()
 	corpse.data = corpse_data
 	get_parent().add_child(corpse)

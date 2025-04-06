@@ -9,6 +9,8 @@ const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 @onready var room_size : Vector2i = data.room_size
 @onready var ground_atlas : Array[Vector2i] = data.ground_atlas
 
+signal character_died
+
 var units := {}
 
 func is_occupied(cell: Vector2) -> bool:
@@ -33,6 +35,8 @@ func reinitialize() -> void:
 			units[Vector2(x,y)] = []
 	for entity in get_tree().get_nodes_in_group("map_entity"):
 		units[entity.cell].append(entity)
+		if entity in get_tree().get_nodes_in_group("character"):
+			entity.connect("died", _on_died)
 
 func export_data() -> RoomData:
 	var new_entities : Array[Entity] = []
@@ -40,3 +44,6 @@ func export_data() -> RoomData:
 		new_entities.append(entity.export_data())
 	data.entities = new_entities
 	return(data)
+
+func _on_died(character : Character) -> void:
+	emit_signal("character_died", character)

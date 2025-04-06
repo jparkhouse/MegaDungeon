@@ -19,35 +19,47 @@ var rooms_data := [
 	preload("res://resources/rooms/room_long.tres")
 ]
 
+var battle_active: bool
+
 func _ready() -> void:
 	init_room(current_room)
+	start_battle()
 
 func init_room(room_id:int) -> void:
 	game_board = room_scene.instantiate()
+	game_board.character_died.connect(_on_character_died)
 	game_board.data = rooms_data[room_id]
 	add_child(game_board)
 	current_time = 0
-	start_battle()
 
 func next_room() -> void:
-	rooms_data[current_room] = game_board.export_data()
+	await clear_room()
 	current_room = (current_room+1)%len(rooms_data)
+	init_room(current_room)
+	start_battle()
+
+func clear_room() -> void:
+	print("in clear room")
+	rooms_data[current_room] = game_board.export_data()
 	game_board.queue_free()
 	_hud.clear_all_character_action_timelines()
 	await get_tree().process_frame
-	init_room(current_room)
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("spacebar"):
-		next_room()
 
 func start_battle() -> void:
+	battle_active = true
 	game_board.reinitialize()
 	
 	for character in get_tree().get_nodes_in_group("character"):
 		_hud.add_character_action_timeline(character)
 	perform_actions()
 	
+func stop_battle() -> void:
+	battle_active = false
+	game_board.reinitialize()
+	_hud.clear_buttons()
+	await clear_room()
+	init_room(current_room)
+
 func perform_actions() -> void:
 	game_board.reinitialize()
 	_hud.clear_buttons()
@@ -75,3 +87,17 @@ func _on_hud_action(ac_nr : int) -> void:
 	await get_tree().create_timer(0.3).timeout
 	current_character.make_selected(false)
 	perform_actions()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("spacebar"):
+		next_room()
+	elif event.is_action_pressed("q"):
+		print(battle_active)
+		if battle_active:
+			print("before stop battle")
+			stop_battle()
+		else:
+			start_battle()
+
+func _on_character_died(character : Character) -> void:
+	_hud.clear_character_action_timeline(character)
