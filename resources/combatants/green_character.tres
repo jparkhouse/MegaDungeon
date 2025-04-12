@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=11 format=3 uid="uid://dbntiskwox1bp"]
 
-[ext_resource type="Script" path="res://scenes/common/action.gd" id="1_1vuat"]
-[ext_resource type="Script" path="res://resources/character_data.gd" id="2_j3ngl"]
+[ext_resource type="Script" uid="uid://bgl4ax45c5jck" path="res://scenes/common/action.gd" id="1_1vuat"]
+[ext_resource type="Script" uid="uid://cl8bjga2x7tq3" path="res://resources/character_data.gd" id="2_j3ngl"]
 [ext_resource type="Resource" uid="uid://dodkgchtfqapk" path="res://resources/square_grid.tres" id="2_mu87c"]
-[ext_resource type="Script" path="res://scenes/actions/move.gd" id="3_e3372"]
-[ext_resource type="Script" path="res://scenes/actions/attack.gd" id="4_0ebwh"]
-[ext_resource type="Script" path="res://scenes/actions/aoe_attack.gd" id="5_qytfq"]
+[ext_resource type="Script" uid="uid://uykl8mj3e3uk" path="res://scenes/actions/move.gd" id="3_e3372"]
+[ext_resource type="Script" uid="uid://djid8svotxnqa" path="res://scenes/actions/attack.gd" id="4_0ebwh"]
+[ext_resource type="Script" uid="uid://cn713rhj2nx25" path="res://scenes/actions/aoe_attack.gd" id="5_qytfq"]
 [ext_resource type="Texture2D" uid="uid://bltn4o3m7gg6y" path="res://assets/images/character_spritesheets/green_character.png" id="7_1okhj"]
 
 [sub_resource type="Resource" id="Resource_5aaan"]

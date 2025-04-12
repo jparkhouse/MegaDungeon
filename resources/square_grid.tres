@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SquareGrid" load_steps=2 format=3 uid="uid://dodkgchtfqapk"]
 
-[ext_resource type="Script" path="res://resources/square_grid.gd" id="1_tcma4"]
+[ext_resource type="Script" uid="uid://v8nv73c4f6bo" path="res://resources/square_grid.gd" id="1_tcma4"]
 
 [resource]
 script = ExtResource("1_tcma4")

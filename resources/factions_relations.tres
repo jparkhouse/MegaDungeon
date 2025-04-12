@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="FactionRelations" load_steps=5 format=3 uid="uid://bnoho2557gx31"]
+
+[ext_resource type="Script" uid="uid://dt15gfmu2e5kx" path="res://resources/single_faction_relations.gd" id="1_8rxb4"]
+[ext_resource type="Script" uid="uid://dao1gx72hrnww" path="res://resources/faction_relations.gd" id="1_g47lr"]
+
+[sub_resource type="Resource" id="Resource_jlw0g"]
+script = ExtResource("1_8rxb4")
+single_faction_relations = Dictionary[int, float]({
+0: 1.0,
+1: -1.0
+})
+metadata/_custom_type_script = "uid://dt15gfmu2e5kx"
+
+[sub_resource type="Resource" id="Resource_mlrkc"]
+script = ExtResource("1_8rxb4")
+single_faction_relations = Dictionary[int, float]({
+0: -1.0,
+1: 1.0
+})
+metadata/_custom_type_script = "uid://dt15gfmu2e5kx"
+
+[resource]
+script = ExtResource("1_g47lr")
+factions_relations = Dictionary[int, ExtResource("1_8rxb4")]({
+0: SubResource("Resource_jlw0g"),
+1: SubResource("Resource_mlrkc")
+})
+metadata/_custom_type_script = "uid://dao1gx72hrnww"

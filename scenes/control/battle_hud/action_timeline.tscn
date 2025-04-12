@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdnsihqxawe5q"]
 
-[ext_resource type="Script" path="res://scenes/control/battle_hud/action_timeline.gd" id="1_omdpe"]
+[ext_resource type="Script" uid="uid://cw0j04hkpnfbl" path="res://scenes/control/battle_hud/action_timeline.gd" id="1_omdpe"]
 
 [node name="ActionTimeline" type="ColorRect" groups=["action_timeline"]]
 custom_minimum_size = Vector2(800, 30)

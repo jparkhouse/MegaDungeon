@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://uni8d21y278y"]
 
-[ext_resource type="Script" path="res://scenes/battle_scene.gd" id="1_5xj18"]
+[ext_resource type="Script" uid="uid://d4nurqvs2j5b" path="res://scenes/battle_scene.gd" id="1_5xj18"]
 [ext_resource type="PackedScene" uid="uid://b36x56d1bv0as" path="res://scenes/control/battle_hud/hud.tscn" id="3_objlv"]
 
 [node name="Battle_scene" type="Node"]

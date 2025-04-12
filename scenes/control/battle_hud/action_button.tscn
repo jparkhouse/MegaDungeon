@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://224vapkxye18"]
 
-[ext_resource type="Script" path="res://scenes/control/battle_hud/action_button.gd" id="1_wdgwv"]
+[ext_resource type="Script" uid="uid://cbxhekct1i6fx" path="res://scenes/control/battle_hud/action_button.gd" id="1_wdgwv"]
 
 [node name="action_button" type="Button" groups=["action_button"]]
 offset_right = 100.0

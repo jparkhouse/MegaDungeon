@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccwy1xh3i8w7d"]
 
-[ext_resource type="Script" path="res://scenes/control/cursor.gd" id="1_a8l2a"]
+[ext_resource type="Script" uid="uid://dab6f0fo73hmd" path="res://scenes/control/cursor.gd" id="1_a8l2a"]
 
 [node name="Cursor" type="Node2D" groups=["cursor"]]
 visible = false
