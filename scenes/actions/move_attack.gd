@@ -5,6 +5,7 @@ class_name MoveAttackClass
 @export var damage:    int
 @export var range := 1
 @export var move_range := 1
+var total_range = range + move_range
 
 func perform_action(character: Character, parameters: Dictionary) -> void:
 	var line_cells : Array[Vector2] = character.grid.calculate_line(character.cell, parameters["target"].cell)

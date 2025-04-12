@@ -30,4 +30,5 @@ character_name = "red"
 max_health = 15
 move_range = 2
 health = 15
+faction = 1
 cell = Vector2(1, 1)

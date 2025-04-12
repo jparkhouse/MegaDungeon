@@ -28,6 +28,7 @@ var queued_action_parameters
 @onready var max_health: int = data.max_health
 @onready var move_range: int = data.move_range
 @onready var health: int = data.health
+@onready var faction: Enums.factions = data.faction
 
 
 @onready var cell : Vector2 = grid.gridclamp(data.cell) :
