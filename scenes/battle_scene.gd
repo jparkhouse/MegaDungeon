@@ -68,11 +68,15 @@ func perform_actions() -> void:
 			current_character = character
 			await current_character.execute_action()
 			print(character.character_name + "'s turn")
-			current_character.make_selected(true)
-			for action in character.actions:
-				_hud.add_action(action)
-			_hud.change_active_character(current_character)
-			return
+			if character.is_in_party:
+				current_character.make_selected(true)
+				for action in character.actions:
+					_hud.add_action(action)
+				_hud.change_active_character(current_character)
+				return
+			else:
+				await get_tree().create_timer(0.3).timeout
+				await current_character.queue_ai_action()
 	advance_time()
 	await get_tree().create_timer(0.3).timeout
 	await perform_actions()
@@ -83,7 +87,7 @@ func advance_time() -> void:
 
 func _on_hud_action(ac_nr : int) -> void:
 	await current_character.cancel_action()
-	await current_character.queue_action(ac_nr)
+	await current_character.queue_pc_action(ac_nr)
 	await get_tree().create_timer(0.3).timeout
 	current_character.make_selected(false)
 	perform_actions()

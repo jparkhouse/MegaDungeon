@@ -16,6 +16,7 @@ var queued_action_parameters
 @onready var _visuals := $Visuals
 @onready var _anim_player := $Visuals/AnimationPlayer
 @onready var _path_follow := $Visuals/PathFollow2D
+var _ai
 
 @onready var character_name: String = data.character_name
 @onready var skin: Texture = data.skin:
@@ -26,10 +27,10 @@ var queued_action_parameters
 		return _sprite.texture
 @onready var actions: Array[ActionClass] = data.actions
 @onready var max_health: int = data.max_health
-@onready var move_range: int = data.move_range
 @onready var health: int = data.health
 @onready var faction: Enums.factions = data.faction
-
+@onready var ai_scene: PackedScene = data.ai
+@onready var is_in_party: bool = data.is_in_party
 
 @onready var cell : Vector2 = grid.gridclamp(data.cell) :
 	set(value):
@@ -58,6 +59,7 @@ func _ready() -> void:
 	health = max_health
 	_visuals.position = grid.calculate_map_position(cell)
 	_anim_player.play("idle")
+	_ai = ai_scene.instantiate()
 	if not Engine.is_editor_hint():
 		_visuals.curve = Curve2D.new()
 
@@ -111,10 +113,18 @@ func execute_action() -> void:
 		await actions[queued_action].perform_action(self, queued_action_parameters)
 	queued_action = null
 
-func queue_action(action_index : int) -> void:
+func queue_ai_action() -> void:
+	var action_decided : Dictionary = _ai.decide_move(self, get_parent())
+	queue_action(action_decided["action_index"], action_decided["parameters"])
+
+func queue_pc_action(action_index : int) -> void:
+	var parameters : Dictionary = await actions[action_index].get_parameters(self)
+	queue_action(action_index, parameters)
+
+func queue_action(action_index : int, parameters: Dictionary) -> void:
+	queued_action_parameters = parameters
 	next_turn += actions[action_index].action_time
 	queued_action = action_index
-	queued_action_parameters = await actions[queued_action].get_parameters(self)
 	emit_signal("acted", actions[action_index].action_time)
 
 func cancel_action() -> void:
@@ -141,7 +151,6 @@ func die() -> void:
 	get_parent().add_child(corpse)
 	corpse.set_skin(_sprite.texture)
 	corpse.set_skin_frame(_sprite.hframes, _sprite.vframes, 3)
-	print("in die")
 	corpse.set_cell(cell)
 	corpse.set_scale(Vector2(0.40, 0.40))
 	queue_free()
@@ -157,7 +166,9 @@ func export_data() -> CharacterData:
 	data.skin = skin
 	data.actions = actions
 	data.max_health = max_health
-	data.move_range = move_range
 	data.health = health
 	data.cell = cell
+	data.faction = faction
+	data.ai = ai_scene
+	data.is_in_party = is_in_party
 	return(data)

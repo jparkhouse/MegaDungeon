@@ -3,8 +3,18 @@ extends ActionClass
 class_name MoveAttackClass
 
 @export var damage:    int
-@export var range := 1
-@export var move_range := 1
+@export var range := 1:
+	set(value):
+		range = value
+		total_range = range + move_range
+	get:
+		return range
+@export var move_range := 1:
+	set(value):
+		move_range = value
+		total_range = range + move_range
+	get:
+		return move_range
 var total_range = range + move_range
 
 func perform_action(character: Character, parameters: Dictionary) -> void:

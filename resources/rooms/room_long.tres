@@ -1,76 +1,10 @@
-[gd_resource type="Resource" script_class="RoomData" load_steps=19 format=3 uid="uid://b7ugggpvw4sti"]
+[gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://b7ugggpvw4sti"]
 
 [ext_resource type="Script" uid="uid://3u3rlahuoloc" path="res://resources/entity.gd" id="1_81bsx"]
 [ext_resource type="Script" uid="uid://buo1t2mlivsrc" path="res://resources/room_data.gd" id="2_4oua7"]
-[ext_resource type="Script" uid="uid://bgl4ax45c5jck" path="res://scenes/common/action.gd" id="2_gv14f"]
-[ext_resource type="Resource" uid="uid://dodkgchtfqapk" path="res://resources/square_grid.tres" id="3_8o4tw"]
-[ext_resource type="Script" uid="uid://uykl8mj3e3uk" path="res://scenes/actions/move.gd" id="4_h8y32"]
-[ext_resource type="Script" uid="uid://djid8svotxnqa" path="res://scenes/actions/attack.gd" id="5_4km50"]
-[ext_resource type="Script" uid="uid://cn713rhj2nx25" path="res://scenes/actions/aoe_attack.gd" id="6_chnmg"]
-[ext_resource type="Script" uid="uid://cl8bjga2x7tq3" path="res://resources/character_data.gd" id="7_5f02a"]
-[ext_resource type="Texture2D" uid="uid://bltn4o3m7gg6y" path="res://assets/images/character_spritesheets/green_character.png" id="8_odn7n"]
-[ext_resource type="Script" uid="uid://dxb606kk68iqq" path="res://scenes/actions/move_attack.gd" id="9_w633m"]
-[ext_resource type="Texture2D" uid="uid://bcem8bm3kt5pu" path="res://assets/images/character_spritesheets/red_character.png" id="10_bih6l"]
-
-[sub_resource type="Resource" id="Resource_5aaan"]
-script = ExtResource("4_h8y32")
-grid = ExtResource("3_8o4tw")
-action_name = "move"
-action_time = 1
-
-[sub_resource type="Resource" id="Resource_v7o3w"]
-script = ExtResource("5_4km50")
-damage = 15
-range = 2
-action_name = "attack"
-action_time = 2
-
-[sub_resource type="Resource" id="Resource_oqhdp"]
-script = ExtResource("6_chnmg")
-damage = 5
-range = 2
-cells = Array[Vector2]([Vector2(0, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1), Vector2(0, -1)])
-action_name = "aoe"
-action_time = 3
-
-[sub_resource type="Resource" id="Resource_5wiy6"]
-resource_local_to_scene = true
-script = ExtResource("7_5f02a")
-skin = ExtResource("8_odn7n")
-actions = Array[ExtResource("2_gv14f")]([SubResource("Resource_5aaan"), SubResource("Resource_v7o3w"), SubResource("Resource_oqhdp")])
-character_name = "green"
-max_health = 10
-move_range = 2
-health = 10
-cell = Vector2(0, 1)
-
-[sub_resource type="Resource" id="Resource_kxprf"]
-script = ExtResource("4_h8y32")
-grid = ExtResource("3_8o4tw")
-action_name = "move"
-action_time = 1
-
-[sub_resource type="Resource" id="Resource_kokyb"]
-script = ExtResource("9_w633m")
-damage = 10
-range = 1
-move_range = 1
-action_name = "charge"
-action_time = 2
-
-[sub_resource type="Resource" id="Resource_6rkd8"]
-resource_local_to_scene = true
-script = ExtResource("7_5f02a")
-skin = ExtResource("10_bih6l")
-actions = Array[ExtResource("2_gv14f")]([SubResource("Resource_kxprf"), SubResource("Resource_kokyb")])
-character_name = "red"
-max_health = 15
-move_range = 2
-health = 15
-cell = Vector2(1, 1)
 
 [resource]
 script = ExtResource("2_4oua7")
-entities = Array[ExtResource("1_81bsx")]([SubResource("Resource_5wiy6"), SubResource("Resource_6rkd8")])
+entities = Array[ExtResource("1_81bsx")]([])
 room_size = Vector2i(5, 8)
 ground_atlas = Array[Vector2i]([Vector2i(9, 8), Vector2i(16, 10)])

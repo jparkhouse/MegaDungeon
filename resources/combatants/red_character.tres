@@ -1,34 +1,43 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=9 format=3 uid="uid://ulx2tvgj10os"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=11 format=3 uid="uid://ulx2tvgj10os"]
 
 [ext_resource type="Script" uid="uid://bgl4ax45c5jck" path="res://scenes/common/action.gd" id="1_ork4g"]
 [ext_resource type="Script" uid="uid://cl8bjga2x7tq3" path="res://resources/character_data.gd" id="2_61hlg"]
 [ext_resource type="Resource" uid="uid://dodkgchtfqapk" path="res://resources/square_grid.tres" id="2_xaem4"]
 [ext_resource type="Script" uid="uid://uykl8mj3e3uk" path="res://scenes/actions/move.gd" id="3_p3j6q"]
 [ext_resource type="Script" uid="uid://dxb606kk68iqq" path="res://scenes/actions/move_attack.gd" id="4_gjeky"]
+[ext_resource type="Script" uid="uid://djid8svotxnqa" path="res://scenes/actions/attack.gd" id="5_lxrfc"]
 [ext_resource type="Texture2D" uid="uid://bcem8bm3kt5pu" path="res://assets/images/character_spritesheets/red_character.png" id="6_ucndb"]
 
 [sub_resource type="Resource" id="Resource_kxprf"]
 script = ExtResource("3_p3j6q")
 grid = ExtResource("2_xaem4")
+move_range = 2
 action_name = "move"
 action_time = 1
 
 [sub_resource type="Resource" id="Resource_kokyb"]
 script = ExtResource("4_gjeky")
-damage = 10
-range = 1
+damage = 5
+range = 2
 move_range = 1
 action_name = "charge"
 action_time = 2
+
+[sub_resource type="Resource" id="Resource_piw42"]
+script = ExtResource("5_lxrfc")
+damage = 10
+range = 2
+action_name = "Attack"
+action_time = 2
+metadata/_custom_type_script = "uid://djid8svotxnqa"
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_61hlg")
 skin = ExtResource("6_ucndb")
-actions = Array[ExtResource("1_ork4g")]([SubResource("Resource_kxprf"), SubResource("Resource_kokyb")])
+actions = Array[ExtResource("1_ork4g")]([SubResource("Resource_kxprf"), SubResource("Resource_kokyb"), SubResource("Resource_piw42")])
 character_name = "red"
 max_health = 15
-move_range = 2
 health = 15
 faction = 1
 cell = Vector2(1, 1)

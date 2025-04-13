@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr1t5wgrybocf"]
+
+[ext_resource type="Script" uid="uid://cf4a0do7mtjil" path="res://scenes/NPC_AI/basic_ai.gd" id="1_6ph8f"]
+
+[node name="BasicAi" type="Node"]
+script = ExtResource("1_6ph8f")
+metadata/_custom_type_script = "uid://cf4a0do7mtjil"
