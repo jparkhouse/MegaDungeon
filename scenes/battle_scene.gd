@@ -10,6 +10,7 @@ signal time_passed
 
 @onready var _tile_map_layer := $GameBoard/TileMapLayer
 @onready var _hud := $HUD
+@onready var _cursor := $Cursor
 
 var game_board : GameBoard
 var current_room := 0
@@ -22,6 +23,7 @@ var rooms_data := [
 var battle_active: bool
 
 func _ready() -> void:
+	add_child(_cursor)
 	init_room(current_room)
 	start_battle()
 
@@ -30,6 +32,7 @@ func init_room(room_id:int) -> void:
 	game_board.character_died.connect(_on_character_died)
 	game_board.data = rooms_data[room_id]
 	add_child(game_board)
+	move_child(game_board, 0)
 	current_time = 0
 
 func next_room() -> void:
@@ -37,6 +40,16 @@ func next_room() -> void:
 	current_room = (current_room+1)%len(rooms_data)
 	init_room(current_room)
 	start_battle()
+
+func go_to_room(room_data: RoomData) -> void:
+	print("IN GO TO ROOM")
+	await clear_room()
+	game_board = room_scene.instantiate()
+	game_board.character_died.connect(_on_character_died)
+	game_board.data = room_data
+	add_child(game_board)
+	move_child(game_board, 0)
+	current_time = 0
 
 func clear_room() -> void:
 	print("in clear room")
@@ -48,7 +61,8 @@ func clear_room() -> void:
 func start_battle() -> void:
 	battle_active = true
 	game_board.reinitialize()
-	
+	_cursor.hide()
+	_cursor.process_mode = _cursor.PROCESS_MODE_DISABLED
 	for character in get_tree().get_nodes_in_group("character"):
 		_hud.add_character_action_timeline(character)
 	perform_actions()
@@ -57,6 +71,8 @@ func stop_battle() -> void:
 	battle_active = false
 	game_board.reinitialize()
 	_hud.clear_buttons()
+	_cursor.show()
+	_cursor.process_mode = _cursor.PROCESS_MODE_INHERIT
 	await clear_room()
 	init_room(current_room)
 
@@ -105,3 +121,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_character_died(character : Character) -> void:
 	_hud.clear_character_action_timeline(character)
+
+
+func _on_cursor_accept_pressed(cell: Vector2) -> void:
+	if not battle_active:
+		for entity in game_board.units[cell]:
+			if entity.has_method("on_select"):
+				entity.on_select()

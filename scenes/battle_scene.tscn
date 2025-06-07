@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://uni8d21y278y"]
+[gd_scene load_steps=4 format=3 uid="uid://uni8d21y278y"]
 
 [ext_resource type="Script" uid="uid://d4nurqvs2j5b" path="res://scenes/battle_scene.gd" id="1_5xj18"]
 [ext_resource type="PackedScene" uid="uid://b36x56d1bv0as" path="res://scenes/control/battle_hud/hud.tscn" id="3_objlv"]
+[ext_resource type="PackedScene" uid="uid://ccwy1xh3i8w7d" path="res://scenes/control/cursor.tscn" id="3_rca61"]
 
-[node name="Battle_scene" type="Node"]
+[node name="BattleScene" type="Node"]
 script = ExtResource("1_5xj18")
 
 [node name="HUD" parent="." instance=ExtResource("3_objlv")]
 
+[node name="Cursor" parent="." instance=ExtResource("3_rca61")]
+
 [connection signal="action" from="HUD" to="." method="_on_hud_action"]
+[connection signal="accept_pressed" from="Cursor" to="." method="_on_cursor_accept_pressed"]

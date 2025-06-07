@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn382cxecsby4"]
+
+[ext_resource type="Script" uid="uid://b4p13j3o7kxly" path="res://scenes/entities/room_adjacency.gd" id="1_h0yim"]
+
+[node name="RoomAdjacency" type="Node" groups=["map_entity"]]
+script = ExtResource("1_h0yim")

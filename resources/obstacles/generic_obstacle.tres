@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ObstacleData" load_steps=3 format=3 uid="uid://di0qgsc7p5y7"]
 
-[ext_resource type="Script" uid="uid://bbs7phve002x5" path="res://resources/obstacle_data.gd" id="1_qx0g8"]
+[ext_resource type="Script" uid="uid://bbs7phve002x5" path="res://resources/data/obstacle_data.gd" id="1_qx0g8"]
 [ext_resource type="Texture2D" uid="uid://dywy6l0b50bb0" path="res://assets/images/snailShell.png" id="2_d6psy"]
 
 [resource]

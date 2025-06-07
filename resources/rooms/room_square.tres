@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="RoomData" load_steps=21 format=3 uid="uid://duhoe3v7hkk6i"]
+[gd_resource type="Resource" script_class="RoomData" load_steps=24 format=3 uid="uid://duhoe3v7hkk6i"]
 
 [ext_resource type="Script" uid="uid://3u3rlahuoloc" path="res://resources/entity.gd" id="1_6mg8r"]
-[ext_resource type="Script" uid="uid://buo1t2mlivsrc" path="res://resources/room_data.gd" id="2_da18b"]
+[ext_resource type="Script" uid="uid://buo1t2mlivsrc" path="res://resources/data/room_data.gd" id="2_da18b"]
 [ext_resource type="Script" uid="uid://bgl4ax45c5jck" path="res://scenes/common/action.gd" id="2_mijka"]
 [ext_resource type="Resource" uid="uid://dodkgchtfqapk" path="res://resources/square_grid.tres" id="3_h6lpo"]
 [ext_resource type="Script" uid="uid://uykl8mj3e3uk" path="res://scenes/actions/move.gd" id="4_48wx7"]
 [ext_resource type="Script" uid="uid://djid8svotxnqa" path="res://scenes/actions/attack.gd" id="5_fc8da"]
 [ext_resource type="Script" uid="uid://cn713rhj2nx25" path="res://scenes/actions/aoe_attack.gd" id="6_ofuio"]
 [ext_resource type="PackedScene" uid="uid://cr1t5wgrybocf" path="res://scenes/NPC_AI/basic_ai.tscn" id="7_4codo"]
-[ext_resource type="Script" uid="uid://cl8bjga2x7tq3" path="res://resources/character_data.gd" id="7_rffij"]
+[ext_resource type="Script" uid="uid://cl8bjga2x7tq3" path="res://resources/data/character_data.gd" id="7_rffij"]
 [ext_resource type="Texture2D" uid="uid://bltn4o3m7gg6y" path="res://assets/images/character_spritesheets/green_character.png" id="8_81sfh"]
 [ext_resource type="Script" uid="uid://dxb606kk68iqq" path="res://scenes/actions/move_attack.gd" id="9_cclt2"]
 [ext_resource type="Texture2D" uid="uid://bcem8bm3kt5pu" path="res://assets/images/character_spritesheets/red_character.png" id="10_tc33o"]
+[ext_resource type="Script" uid="uid://by0txtal8bme6" path="res://resources/data/room_adjacency_data.gd" id="12_g14kj"]
+[ext_resource type="Resource" uid="uid://b7ugggpvw4sti" path="res://resources/rooms/room_long.tres" id="13_ksqw3"]
 
 [sub_resource type="Resource" id="Resource_5aaan"]
 script = ExtResource("4_48wx7")
@@ -46,7 +48,7 @@ health = 15
 faction = 0
 ai = ExtResource("7_4codo")
 is_in_party = true
-cell = Vector2(0, 0)
+cell = Vector2(1, 0)
 
 [sub_resource type="Resource" id="Resource_kxprf"]
 script = ExtResource("4_48wx7")
@@ -84,8 +86,15 @@ ai = ExtResource("7_4codo")
 is_in_party = false
 cell = Vector2(0, 4)
 
+[sub_resource type="Resource" id="Resource_ls4yt"]
+script = ExtResource("12_g14kj")
+target_room = ExtResource("13_ksqw3")
+target_cell = Vector2(0, 0)
+cell = Vector2(0, 0)
+metadata/_custom_type_script = "uid://by0txtal8bme6"
+
 [resource]
 script = ExtResource("2_da18b")
-entities = Array[ExtResource("1_6mg8r")]([SubResource("Resource_13g5e"), SubResource("Resource_g14kj")])
+entities = Array[ExtResource("1_6mg8r")]([SubResource("Resource_13g5e"), SubResource("Resource_g14kj"), SubResource("Resource_ls4yt")])
 room_size = Vector2i(5, 5)
 ground_atlas = Array[Vector2i]([Vector2i(9, 8), Vector2i(16, 10)])

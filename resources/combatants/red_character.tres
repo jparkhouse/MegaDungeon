@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=11 format=3 uid="uid://ulx2tvgj10os"]
 
 [ext_resource type="Script" uid="uid://bgl4ax45c5jck" path="res://scenes/common/action.gd" id="1_ork4g"]
-[ext_resource type="Script" uid="uid://cl8bjga2x7tq3" path="res://resources/character_data.gd" id="2_61hlg"]
+[ext_resource type="Script" uid="uid://cl8bjga2x7tq3" path="res://resources/data/character_data.gd" id="2_61hlg"]
 [ext_resource type="Resource" uid="uid://dodkgchtfqapk" path="res://resources/square_grid.tres" id="2_xaem4"]
 [ext_resource type="Script" uid="uid://uykl8mj3e3uk" path="res://scenes/actions/move.gd" id="3_p3j6q"]
 [ext_resource type="Script" uid="uid://dxb606kk68iqq" path="res://scenes/actions/move_attack.gd" id="4_gjeky"]

@@ -4,6 +4,7 @@
 
 [node name="Cursor" type="Node2D" groups=["cursor"]]
 visible = false
+top_level = true
 script = ExtResource("1_a8l2a")
 
 [node name="Timer" type="Timer" parent="."]
